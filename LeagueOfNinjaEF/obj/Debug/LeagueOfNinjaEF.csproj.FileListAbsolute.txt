@@ -1,0 +1,10 @@
+C:\Users\Sagar\Documents\GitHub\LeagueOfNinja\LeagueOfNinjaEF\bin\Debug\LeagueOfNinjaEF.exe.config
+C:\Users\Sagar\Documents\GitHub\LeagueOfNinja\LeagueOfNinjaEF\bin\Debug\LeagueOfNinjaEF.exe
+C:\Users\Sagar\Documents\GitHub\LeagueOfNinja\LeagueOfNinjaEF\bin\Debug\LeagueOfNinjaEF.pdb
+C:\Users\Sagar\Documents\GitHub\LeagueOfNinja\LeagueOfNinjaEF\bin\Debug\EntityFramework.dll
+C:\Users\Sagar\Documents\GitHub\LeagueOfNinja\LeagueOfNinjaEF\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Sagar\Documents\GitHub\LeagueOfNinja\LeagueOfNinjaEF\bin\Debug\EntityFramework.xml
+C:\Users\Sagar\Documents\GitHub\LeagueOfNinja\LeagueOfNinjaEF\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Sagar\Documents\GitHub\LeagueOfNinja\LeagueOfNinjaEF\obj\Debug\LeagueOfNinjaEF.csprojResolveAssemblyReference.cache
+C:\Users\Sagar\Documents\GitHub\LeagueOfNinja\LeagueOfNinjaEF\obj\Debug\LeagueOfNinjaEF.exe
+C:\Users\Sagar\Documents\GitHub\LeagueOfNinja\LeagueOfNinjaEF\obj\Debug\LeagueOfNinjaEF.pdb

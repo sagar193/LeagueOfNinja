@@ -49,7 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DAL\LoNInitializer.cs" />
+    <Compile Include="Data\LoNInitializer.cs" />
     <Compile Include="Data\LoNContext.cs" />
     <Compile Include="Models\Equipment.cs" />
     <Compile Include="Models\Ninja.cs" />

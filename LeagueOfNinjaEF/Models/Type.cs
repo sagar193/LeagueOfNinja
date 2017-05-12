@@ -10,8 +10,9 @@ namespace LeagueOfNinjaEF.Models
     class Type
     {
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int ID { get; set; }
+        public int TypeId { get; set; }
         public string Name { get; set; }
 
+        public virtual ICollection<Equipment> Equipments { get; set; }
     }
 }
