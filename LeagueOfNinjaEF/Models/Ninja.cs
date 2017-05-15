@@ -30,7 +30,7 @@ namespace LeagueOfNinjaEF.Models
         public int? LegRefId { get; set; }
 
         //Foreign key for Gloves Equipment
-        [ForeignKey("GloveRefId")]
+        [ForeignKey("GlovesRefId")]
         public Equipment Gloves { get; set; }
         public int? GlovesRefId { get; set; }
 

@@ -10,7 +10,7 @@ namespace LeagueOfNinjaEF.Data
 {
     class LoNInitializer : System.Data.Entity.DropCreateDatabaseIfModelChanges<LoNContext>
     {
-        protected override void Seed(LoNContext context)
+        public static void Initialize(LoNContext context)
         {
             var Types = new List<Models.Type>
             {
@@ -24,14 +24,6 @@ namespace LeagueOfNinjaEF.Data
             Types.ForEach(s => context.Type.Add(s));
             context.SaveChanges();
 
-            var Ninjas = new List<Ninja>
-            {
-                new Ninja{NinjaId=0, HelmetRefId=2, Name="Sagar"}
-            };
-
-            Ninjas.ForEach(s => context.Ninja.Add(s));
-            context.SaveChanges();
-
             var Equipments = new List<Equipment>
             {
                 new Equipment{EquipmentId=0, Name="Bronze helmet", Dexterity=3, Intelligence=0, Strength=8, Price=12, TypeRefId=0},
@@ -40,6 +32,14 @@ namespace LeagueOfNinjaEF.Data
             };
 
             Equipments.ForEach(s => context.Equipment.Add(s));
+            context.SaveChanges();
+            
+            var Ninjas = new List<Ninja>
+            {
+                new Ninja{NinjaId=0, HelmetRefId=2, Name="Sagar"}
+            };
+
+            Ninjas.ForEach(s => context.Ninja.Add(s));
             context.SaveChanges();
         }
     }
