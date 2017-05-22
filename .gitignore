@@ -72,6 +72,16 @@ bld/
 [Oo]bj/
 [Ll]og/
 
+**/[Bb]in/**
+**/[Oo]bj/**
+**/[Ll]og/
+**/[Bb]in/
+**/[Oo]bj/
+**/[Ll]og/
+*/[Bb]in/*
+*/[Oo]bj/*
+*/[Ll]og/*
+
 LeagueOfNinjaEF/[Bb]in/
 LeagueOfNinjaEF/[Oo]bj/
 LeagueOfNinjaEF/[Ll]og/
