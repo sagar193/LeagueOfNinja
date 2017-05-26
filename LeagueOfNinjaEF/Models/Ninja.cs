@@ -15,28 +15,28 @@ namespace LeagueOfNinjaEF.Models
         public string Name { get; set; }
 
         //Foreign key for Chest Equipment
+        public int? ChestRefId { get; set; }
         [ForeignKey("ChestRefId")]
         public virtual Equipment Chest { get; set; }
-        public int? ChestRefId { get; set; }
 
         //Foreign key for Helmet Equipment
-        [ForeignKey("HelmetRefId")]
-        public Equipment Helmet { get; set; }
         public int? HelmetRefId { get; set; }
+        [ForeignKey("HelmetRefId")]
+        public virtual Equipment Helmet { get; set; }
 
         //Foreign key for Leg Equipment
-        [ForeignKey("LegRefId")]
-        public Equipment Legs { get; set; }
         public int? LegRefId { get; set; }
+        [ForeignKey("LegRefId")]
+        public virtual Equipment Legs { get; set; }
 
         //Foreign key for Gloves Equipment
-        [ForeignKey("GlovesRefId")]
-        public Equipment Gloves { get; set; }
         public int? GlovesRefId { get; set; }
+        [ForeignKey("GlovesRefId")]
+        public virtual Equipment Gloves { get; set; }
 
         //Foreign key for Shoes Equipment
-        [ForeignKey("ShoesRefId")]
-        public Equipment Shoes { get; set; }
         public int? ShoesRefId { get; set; }
+        [ForeignKey("ShoesRefId")]
+        public virtual Equipment Shoes { get; set; }
     }
 }

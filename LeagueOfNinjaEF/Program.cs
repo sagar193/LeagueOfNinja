@@ -1,6 +1,7 @@
 ﻿using LeagueOfNinjaEF.Data;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,6 +14,11 @@ namespace LeagueOfNinjaEF
         {
             LoNContext context = new LoNContext();
             LoNInitializer.Initialize(context);
+
+
+            //Database.SetInitializer(new CreateDatabaseIfNotExists<LoNContext>());
+            //LoNContext context = new LoNContext();
+            //context.Database.Initialize(true);
         }
     }
 }

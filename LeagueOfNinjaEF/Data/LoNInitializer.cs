@@ -1,4 +1,5 @@
-﻿using LeagueOfNinjaEF.Data;
+﻿using Devtalk.EF.CodeFirst;
+using LeagueOfNinjaEF.Data;
 using LeagueOfNinjaEF.Models;
 using System;
 using System.Collections.Generic;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace LeagueOfNinjaEF.Data
 {
-    class LoNInitializer : System.Data.Entity.DropCreateDatabaseIfModelChanges<LoNContext>
+    class LoNInitializer : System.Data.Entity.DropCreateDatabaseAlways<LoNContext>
     {
         public static void Initialize(LoNContext context)
         {

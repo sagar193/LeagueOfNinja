@@ -16,13 +16,13 @@ namespace LeagueOfNinjaEF.Models
         public int Intelligence { get; set; }
         public int Dexterity { get; set; }
         public int Price { get; set; }
-        public int TypeRefId { get; set; }
 
         //Foreign key for Type of Equipment
+        public int TypeRefId { get; set; }
         [ForeignKey("TypeRefId")]
         public virtual Type Type { get; set; }
 
-        public ICollection<Ninja> Ninjas { get; set; }
+        public virtual ICollection<Ninja> Ninjas { get; set; }
 
 
     }

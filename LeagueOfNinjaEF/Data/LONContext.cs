@@ -11,7 +11,7 @@ namespace LeagueOfNinjaEF.Data
 {
     class LoNContext : DbContext
     {
-        public LoNContext() : base("LoNContext")
+        public LoNContext() : base("NinjaLeagueConnectionString")
         {
         }
 
@@ -19,9 +19,5 @@ namespace LeagueOfNinjaEF.Data
         public DbSet<Models.Type> Type { get; set; }
         public DbSet<Equipment> Equipment { get; set; }
 
-        protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        {
-            modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
-        }
     }
 }
