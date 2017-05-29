@@ -10,3 +10,16 @@ C:\Users\Sagar\Documents\GitHub\LeagueOfNinja\LeagueOfNinjaEF\obj\Debug\LeagueOf
 C:\Users\Sagar\Documents\GitHub\LeagueOfNinja\LeagueOfNinjaEF\obj\Debug\LeagueOfNinjaEF.pdb
 C:\Users\Sagar\Documents\GitHub\LeagueOfNinja\LeagueOfNinjaEF\bin\Debug\Devtalk.EF.CodeFirst.dll
 C:\Users\Sagar\Documents\GitHub\LeagueOfNinja\LeagueOfNinjaEF\bin\Debug\WebActivator.dll
+C:\Users\ricky\Documents\GitHub\LeagueOfNinja\LeagueOfNinjaEF\bin\Debug\LeagueOfNinjaEF.exe.config
+C:\Users\ricky\Documents\GitHub\LeagueOfNinja\LeagueOfNinjaEF\bin\Debug\LeagueOfNinjaEF.exe
+C:\Users\ricky\Documents\GitHub\LeagueOfNinja\LeagueOfNinjaEF\bin\Debug\LeagueOfNinjaEF.pdb
+C:\Users\ricky\Documents\GitHub\LeagueOfNinja\LeagueOfNinjaEF\bin\Debug\Devtalk.EF.CodeFirst.dll
+C:\Users\ricky\Documents\GitHub\LeagueOfNinja\LeagueOfNinjaEF\bin\Debug\EntityFramework.dll
+C:\Users\ricky\Documents\GitHub\LeagueOfNinja\LeagueOfNinjaEF\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\ricky\Documents\GitHub\LeagueOfNinja\LeagueOfNinjaEF\bin\Debug\WebActivator.dll
+C:\Users\ricky\Documents\GitHub\LeagueOfNinja\LeagueOfNinjaEF\bin\Debug\EntityFramework.xml
+C:\Users\ricky\Documents\GitHub\LeagueOfNinja\LeagueOfNinjaEF\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\ricky\Documents\GitHub\LeagueOfNinja\LeagueOfNinjaEF\obj\Debug\LeagueOfNinjaEF.exe
+C:\Users\ricky\Documents\GitHub\LeagueOfNinja\LeagueOfNinjaEF\obj\Debug\LeagueOfNinjaEF.pdb
+C:\Users\ricky\Documents\GitHub\LeagueOfNinja\LeagueOfNinjaEF\obj\Debug\LeagueOfNinjaEF.Migrations.InitialCreate.resources
+C:\Users\ricky\Documents\GitHub\LeagueOfNinja\LeagueOfNinjaEF\obj\Debug\LeagueOfNinjaEF.csproj.GenerateResource.Cache

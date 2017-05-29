@@ -13,7 +13,7 @@ namespace LeagueOfNinjaEF
         static void Main(string[] args)
         {
             LoNContext context = new LoNContext();
-            LoNInitializer.Initialize(context);
+            //LoNInitializer.Initialize(context);
 
 
             //Database.SetInitializer(new CreateDatabaseIfNotExists<LoNContext>());
