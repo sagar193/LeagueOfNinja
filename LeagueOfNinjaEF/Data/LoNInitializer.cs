@@ -38,7 +38,7 @@ namespace LeagueOfNinjaEF.Data
             
             var Ninjas = new List<Ninja>
             {
-                new Ninja{NinjaId=0, HelmetRefId=2, Name="Sagar"}
+                new Ninja{NinjaId=1, HelmetRefId=2, Name="Sagar"}
             };
 
             Ninjas.ForEach(s => context.Ninja.Add(s));
