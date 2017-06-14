@@ -1,5 +1,4 @@
-﻿using Devtalk.EF.CodeFirst;
-using LeagueOfNinjaEF.Data;
+﻿using LeagueOfNinjaEF.Data;
 using LeagueOfNinjaEF.Models;
 using System;
 using System.Collections.Generic;

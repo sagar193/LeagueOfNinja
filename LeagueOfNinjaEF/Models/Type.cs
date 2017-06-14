@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace LeagueOfNinjaEF.Models
 {
-    class Type
+    public class Type
     {
         [Required][Key]
         public int TypeId { get; set; }

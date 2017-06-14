@@ -5,8 +5,102 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LeagueOfNinja"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="MainWindow" Height="540" Width="960">
     <Grid>
-        
+        <!--3 kolommen-->
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <!--Draw 3 rectangles to show the column outline-->
+        <Rectangle Grid.Column="0" Stroke="#ddd" Margin="10"/>
+        <Rectangle Grid.Column="1" Stroke="#ddd" Margin="10"/>
+        <Rectangle Grid.Column="2" Stroke="#ddd" Margin="10"/>
+        <!--Grid Column 1-->
+        <DockPanel Grid.Column="0" Margin="10">
+            <!--ComboBox with all Types-->
+            <ComboBox DockPanel.Dock="Top" Grid.Column="0" x:Name="typeComboBox" VerticalAlignment="Top" Height="33.96" FontSize="14" Padding="7.5"/>
+
+            <!--Listview with gear of the selected type-->
+            <ListView x:Name="gearListView" FontSize="14" HorizontalAlignment="Stretch"/>
+
+        </DockPanel>
+        <!--Grid Column 2-->
+        <StackPanel Grid.Column="1" VerticalAlignment="Center" Margin="10">
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <!--All Stats names-->
+                <StackPanel Grid.Column="0" Margin="0,0,0,10" VerticalAlignment="Center">
+                    <TextBlock HorizontalAlignment="Stretch" TextWrapping="Wrap" VerticalAlignment="Center" Margin="5,2" Text="Health Points: "/>
+                    <TextBlock HorizontalAlignment="Stretch" TextWrapping="Wrap" VerticalAlignment="Center" Margin="5,2" Text="Mana: "/>
+                    <TextBlock HorizontalAlignment="Stretch" TextWrapping="Wrap" VerticalAlignment="Center" Margin="5,2" Text="Stamina: "/>
+                    <TextBlock HorizontalAlignment="Stretch" TextWrapping="Wrap" VerticalAlignment="Center" Margin="5,2" Text="Strength: "/>
+                    <TextBlock HorizontalAlignment="Stretch" TextWrapping="Wrap" VerticalAlignment="Center" Margin="5,2" Text="Intelligence: "/>
+                    <TextBlock HorizontalAlignment="Stretch" TextWrapping="Wrap" VerticalAlignment="Center" Margin="5,2" Text="Agility: "/>
+                </StackPanel>
+                <!--All stats values-->
+                <StackPanel Grid.Column="1" Margin="0,0,0,10" VerticalAlignment="Center">
+                    <TextBlock HorizontalAlignment="Stretch" Text="100" Margin="5,2" x:Name="healthPointsTextBox"/>
+                    <TextBlock HorizontalAlignment="Stretch" Text="50" Margin="5,2" x:Name="manaTextBox"/>
+                    <TextBlock HorizontalAlignment="Stretch" Text="70" Margin="5,2" x:Name="staminaTextBox"/>
+                    <TextBlock HorizontalAlignment="Stretch" Text="5" Margin="5,2" x:Name="StrengthTextBox"/>
+                    <TextBlock HorizontalAlignment="Stretch" Text="1" Margin="5,2" x:Name="IntelligenceTextBox"/>
+                    <TextBlock HorizontalAlignment="Stretch" Text="3" Margin="5,2" x:Name="AgilityTextBox"/>
+                </StackPanel>
+                <!--All stats differences-->
+                <StackPanel Grid.Column="2" Margin="0,0,0,10" VerticalAlignment="Center">
+                    <TextBlock HorizontalAlignment="Stretch" Text="∧ 25" Margin="5,2" Foreground="Green" x:Name="healthPointsChangeTextBox"/>
+                    <TextBlock HorizontalAlignment="Stretch" Text="∨ 25" Margin="5,2" Foreground="Red" x:Name="manaChangeTextBox"/>
+                    <TextBlock HorizontalAlignment="Stretch" Text="∨ 30" Margin="5,2" Foreground="Red" x:Name="staminaChangeTextBox"/>
+                    <TextBlock HorizontalAlignment="Stretch" Text="∧ 2" Margin="5,2" Foreground="Green" x:Name="StrengthChangeTextBox"/>
+                    <TextBlock HorizontalAlignment="Stretch" Text="∨ 1" Margin="5,2" Foreground="Red" x:Name="IntelligenceChangeTextBox"/>
+                    <TextBlock HorizontalAlignment="Stretch" Text="- 0" Margin="5,2" Foreground="Black" x:Name="AgilityChangeTextBox"/>
+                </StackPanel>
+            </Grid>
+            <Grid Margin="5,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Button Grid.Column="0" Content="Equip" IsEnabled="False"/>
+                <Button Grid.Column="2" Content="Unequip" IsEnabled="False"/>
+            </Grid>
+        </StackPanel>
+        <!--Grid Column 3-->
+        <StackPanel Grid.Column="2" VerticalAlignment="Center" Margin="10">
+            <TextBlock Text="Total stats:" FontWeight="Bold"  HorizontalAlignment="Stretch" TextWrapping="Wrap" VerticalAlignment="Center" Margin="5,5"/>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <!--All Stats names-->
+                <StackPanel Grid.Column="0" Margin="0,0,0,10" VerticalAlignment="Center">
+                    <TextBlock HorizontalAlignment="Stretch" TextWrapping="Wrap" VerticalAlignment="Center" Margin="5,2" Text="Health Points: "/>
+                    <TextBlock HorizontalAlignment="Stretch" TextWrapping="Wrap" VerticalAlignment="Center" Margin="5,2" Text="Mana: "/>
+                    <TextBlock HorizontalAlignment="Stretch" TextWrapping="Wrap" VerticalAlignment="Center" Margin="5,2" Text="Stamina: "/>
+                    <TextBlock HorizontalAlignment="Stretch" TextWrapping="Wrap" VerticalAlignment="Center" Margin="5,2" Text="Strength: "/>
+                    <TextBlock HorizontalAlignment="Stretch" TextWrapping="Wrap" VerticalAlignment="Center" Margin="5,2" Text="Intelligence: "/>
+                    <TextBlock HorizontalAlignment="Stretch" TextWrapping="Wrap" VerticalAlignment="Center" Margin="5,2" Text="Agility: "/>
+                </StackPanel>
+                <!--All stats values-->
+                <StackPanel Grid.Column="1" Margin="0,0,0,10" VerticalAlignment="Center">
+                    <TextBlock HorizontalAlignment="Stretch" Text="250" Margin="5,2" x:Name="totalHealthPointsTextBox"/>
+                    <TextBlock HorizontalAlignment="Stretch" Text="80" Margin="5,2" x:Name="totalManaTextBox"/>
+                    <TextBlock HorizontalAlignment="Stretch" Text="130" Margin="5,2" x:Name="totalStaminaTextBox"/>
+                    <TextBlock HorizontalAlignment="Stretch" Text="9" Margin="5,2" x:Name="totalStrengthTextBox"/>
+                    <TextBlock HorizontalAlignment="Stretch" Text="3" Margin="5,2" x:Name="totalIntelligenceTextBox"/>
+                    <TextBlock HorizontalAlignment="Stretch" Text="5" Margin="5,2" x:Name="totalAgilityTextBox"/>
+                </StackPanel>
+            </Grid>
+        </StackPanel>
     </Grid>
 </Window>

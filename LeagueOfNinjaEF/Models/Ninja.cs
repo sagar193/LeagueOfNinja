@@ -8,7 +8,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace LeagueOfNinjaEF.Models
 {
-    class Ninja
+    public class Ninja
     {
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int NinjaId { get; set; }

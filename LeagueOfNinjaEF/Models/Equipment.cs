@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace LeagueOfNinjaEF.Models
 {
-    class Equipment
+    public class Equipment
     {
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int EquipmentId { get; set; }
