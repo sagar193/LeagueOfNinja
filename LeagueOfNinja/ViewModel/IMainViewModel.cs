@@ -7,7 +7,7 @@ using GalaSoft.MvvmLight;
 
 namespace LeagueOfNinja.ViewModel
 {
-    interface IMainViewModel
+    public interface IMainViewModel
     {
         
     }

@@ -1,4 +1,4 @@
-﻿using LeagueOfNinjaEF.Data;
+﻿using LeagueOfNinjaEF.DAL;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;

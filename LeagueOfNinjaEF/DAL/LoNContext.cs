@@ -7,9 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LeagueOfNinjaEF.Data
+namespace LeagueOfNinjaEF.DAL
 {
-    class LoNContext : DbContext
+    public class LoNContext : DbContext
     {
         public LoNContext() : base("NinjaLeagueConnectionString")
         {

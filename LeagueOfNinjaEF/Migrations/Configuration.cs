@@ -5,14 +5,14 @@ namespace LeagueOfNinjaEF.Migrations
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<LeagueOfNinjaEF.Data.LoNContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<LeagueOfNinjaEF.DAL.LoNContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = true;
         }
 
-        protected override void Seed(LeagueOfNinjaEF.Data.LoNContext context)
+        protected override void Seed(LeagueOfNinjaEF.DAL.LoNContext context)
         {
             context.Type.AddOrUpdate(
                 t => t.TypeId,

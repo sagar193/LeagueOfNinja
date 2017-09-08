@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LeagueOfNinja"
         mc:Ignorable="d"
+        DataContext="{Binding Main, Source={StaticResource Locator}}"
         Title="MainWindow" Height="540" Width="960">
     <Grid>
         <!--3 kolommen-->
@@ -21,10 +22,10 @@
         <!--Grid Column 1-->
         <DockPanel Grid.Column="0" Margin="10">
             <!--ComboBox with all Types-->
-            <ComboBox DockPanel.Dock="Top" Grid.Column="0" x:Name="typeComboBox" VerticalAlignment="Top" Height="33.96" FontSize="14" Padding="7.5"/>
+            <ComboBox DockPanel.Dock="Top" Grid.Column="0" x:Name="typeComboBox" VerticalAlignment="Top" Height="33.96" FontSize="14" Padding="7.5" DisplayMemberPath="Name" ItemsSource="{Binding typeList}" SelectionChanged="typeComboBox_SelectionChanged"/>
 
             <!--Listview with gear of the selected type-->
-            <ListView x:Name="gearListView" FontSize="14" HorizontalAlignment="Stretch"/>
+            <ListView x:Name="equipmentListView" FontSize="14" HorizontalAlignment="Stretch" DisplayMemberPath="Name" ItemsSource="{Binding EquipmentList}"/>
 
         </DockPanel>
         <!--Grid Column 2-->
@@ -93,7 +94,7 @@
                 </StackPanel>
                 <!--All stats values-->
                 <StackPanel Grid.Column="1" Margin="0,0,0,10" VerticalAlignment="Center">
-                    <TextBlock HorizontalAlignment="Stretch" Text="250" Margin="5,2" x:Name="totalHealthPointsTextBox"/>
+                    <TextBlock HorizontalAlignment="Stretch" Text="200" Margin="5,2" x:Name="totalHealthPointsTextBox"/>
                     <TextBlock HorizontalAlignment="Stretch" Text="80" Margin="5,2" x:Name="totalManaTextBox"/>
                     <TextBlock HorizontalAlignment="Stretch" Text="130" Margin="5,2" x:Name="totalStaminaTextBox"/>
                     <TextBlock HorizontalAlignment="Stretch" Text="9" Margin="5,2" x:Name="totalStrengthTextBox"/>

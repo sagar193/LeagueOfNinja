@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,9 +22,16 @@ namespace LeagueOfNinja
     /// </summary>
     public partial class MainWindow : Window
     {
+        IEnumerable fullEquipmentList;
         public MainWindow()
         {
             InitializeComponent();
+            fullEquipmentList = equipmentListView.ItemsSource;
+        }
+
+        private void typeComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            LeagueOfNinjaEF.Models.Type test = (sender as ComboBox).SelectedItem as LeagueOfNinjaEF.Models.Type;
         }
     }
 }

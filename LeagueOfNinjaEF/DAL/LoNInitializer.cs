@@ -1,4 +1,4 @@
-﻿using LeagueOfNinjaEF.Data;
+﻿using LeagueOfNinjaEF.DAL;
 using LeagueOfNinjaEF.Models;
 using System;
 using System.Collections.Generic;
@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LeagueOfNinjaEF.Data
+namespace LeagueOfNinjaEF.DAL
 {
     class LoNInitializer : System.Data.Entity.DropCreateDatabaseIfModelChanges<LoNContext>
     {
