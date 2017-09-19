@@ -12,6 +12,9 @@ namespace LeagueOfNinjaEF.Models
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int EquipmentId { get; set; }
         public string Name { get; set; }
+        public int Health { get; set; }
+        public int Mana { get; set; }
+        public int Stamina { get; set; }
         public int Strength { get; set; }
         public int Intelligence { get; set; }
         public int Dexterity { get; set; }

@@ -22,10 +22,10 @@
         <!--Grid Column 1-->
         <DockPanel Grid.Column="0" Margin="10">
             <!--ComboBox with all Types-->
-            <ComboBox DockPanel.Dock="Top" Grid.Column="0" x:Name="typeComboBox" VerticalAlignment="Top" Height="33.96" FontSize="14" Padding="7.5" DisplayMemberPath="Name" ItemsSource="{Binding typeList}" SelectionChanged="typeComboBox_SelectionChanged"/>
+            <ComboBox DockPanel.Dock="Top" Grid.Column="0" x:Name="typeComboBox" VerticalAlignment="Top" Height="33.96" FontSize="14" Padding="7.5" DisplayMemberPath="Name" ItemsSource="{Binding typeList}" SelectedItem="{Binding selectedType}"/>
 
             <!--Listview with gear of the selected type-->
-            <ListView x:Name="equipmentListView" FontSize="14" HorizontalAlignment="Stretch" DisplayMemberPath="Name" ItemsSource="{Binding EquipmentList}"/>
+            <ListView x:Name="equipmentListView" FontSize="14" HorizontalAlignment="Stretch" DisplayMemberPath="Name" ItemsSource="{Binding EquipmentList}" SelectionChanged="equipmentListView_SelectionChanged"/>
 
         </DockPanel>
         <!--Grid Column 2-->
@@ -44,16 +44,18 @@
                     <TextBlock HorizontalAlignment="Stretch" TextWrapping="Wrap" VerticalAlignment="Center" Margin="5,2" Text="Stamina: "/>
                     <TextBlock HorizontalAlignment="Stretch" TextWrapping="Wrap" VerticalAlignment="Center" Margin="5,2" Text="Strength: "/>
                     <TextBlock HorizontalAlignment="Stretch" TextWrapping="Wrap" VerticalAlignment="Center" Margin="5,2" Text="Intelligence: "/>
-                    <TextBlock HorizontalAlignment="Stretch" TextWrapping="Wrap" VerticalAlignment="Center" Margin="5,2" Text="Agility: "/>
+                    <TextBlock HorizontalAlignment="Stretch" TextWrapping="Wrap" VerticalAlignment="Center" Margin="5,2" Text="Dexterity: "/>
+                    <TextBlock HorizontalAlignment="Stretch" TextWrapping="Wrap" VerticalAlignment="Center" Margin="5,2" Text="Price: "/>
                 </StackPanel>
                 <!--All stats values-->
                 <StackPanel Grid.Column="1" Margin="0,0,0,10" VerticalAlignment="Center">
-                    <TextBlock HorizontalAlignment="Stretch" Text="100" Margin="5,2" x:Name="healthPointsTextBox"/>
-                    <TextBlock HorizontalAlignment="Stretch" Text="50" Margin="5,2" x:Name="manaTextBox"/>
-                    <TextBlock HorizontalAlignment="Stretch" Text="70" Margin="5,2" x:Name="staminaTextBox"/>
-                    <TextBlock HorizontalAlignment="Stretch" Text="5" Margin="5,2" x:Name="StrengthTextBox"/>
-                    <TextBlock HorizontalAlignment="Stretch" Text="1" Margin="5,2" x:Name="IntelligenceTextBox"/>
-                    <TextBlock HorizontalAlignment="Stretch" Text="3" Margin="5,2" x:Name="AgilityTextBox"/>
+                    <TextBlock HorizontalAlignment="Stretch" Text="" Margin="5,2" x:Name="healthPointsTextBox"/>
+                    <TextBlock HorizontalAlignment="Stretch" Text="" Margin="5,2" x:Name="manaTextBox"/>
+                    <TextBlock HorizontalAlignment="Stretch" Text="" Margin="5,2" x:Name="staminaTextBox"/>
+                    <TextBlock HorizontalAlignment="Stretch" Text="" Margin="5,2" x:Name="StrengthTextBox"/>
+                    <TextBlock HorizontalAlignment="Stretch" Text="" Margin="5,2" x:Name="IntelligenceTextBox"/>
+                    <TextBlock HorizontalAlignment="Stretch" Text="" Margin="5,2" x:Name="AgilityTextBox"/>
+                    <TextBlock HorizontalAlignment="Stretch" Text="" Margin="5,2" x:Name="PriceTextBox"/>
                 </StackPanel>
                 <!--All stats differences-->
                 <StackPanel Grid.Column="2" Margin="0,0,0,10" VerticalAlignment="Center">
@@ -63,6 +65,7 @@
                     <TextBlock HorizontalAlignment="Stretch" Text="∧ 2" Margin="5,2" Foreground="Green" x:Name="StrengthChangeTextBox"/>
                     <TextBlock HorizontalAlignment="Stretch" Text="∨ 1" Margin="5,2" Foreground="Red" x:Name="IntelligenceChangeTextBox"/>
                     <TextBlock HorizontalAlignment="Stretch" Text="- 0" Margin="5,2" Foreground="Black" x:Name="AgilityChangeTextBox"/>
+                    <TextBlock HorizontalAlignment="Stretch" Text="- 0" Margin="5,2" Foreground="Black" x:Name="PriceChangeTextBox"/>
                 </StackPanel>
             </Grid>
             <Grid Margin="5,0">
@@ -77,6 +80,7 @@
         </StackPanel>
         <!--Grid Column 3-->
         <StackPanel Grid.Column="2" VerticalAlignment="Center" Margin="10">
+            <TextBlock x:Name="ninjaName" FontWeight="Bold"  HorizontalAlignment="Stretch" TextWrapping="Wrap" VerticalAlignment="Center" Margin="5,5"/>
             <TextBlock Text="Total stats:" FontWeight="Bold"  HorizontalAlignment="Stretch" TextWrapping="Wrap" VerticalAlignment="Center" Margin="5,5"/>
             <Grid>
                 <Grid.ColumnDefinitions>

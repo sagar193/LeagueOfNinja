@@ -22,16 +22,37 @@ namespace LeagueOfNinja
     /// </summary>
     public partial class MainWindow : Window
     {
-        IEnumerable fullEquipmentList;
+        List<LeagueOfNinjaEF.Models.Equipment> fullEquipmentList;
         public MainWindow()
         {
             InitializeComponent();
-            fullEquipmentList = equipmentListView.ItemsSource;
+            fullEquipmentList = equipmentListView.ItemsSource as List<LeagueOfNinjaEF.Models.Equipment>;
         }
 
         private void typeComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            LeagueOfNinjaEF.Models.Type test = (sender as ComboBox).SelectedItem as LeagueOfNinjaEF.Models.Type;
+            LeagueOfNinjaEF.Models.Type selectedType = (sender as ComboBox).SelectedItem as LeagueOfNinjaEF.Models.Type;
+
+            List<LeagueOfNinjaEF.Models.Equipment> filteredEquipmentList = new List<LeagueOfNinjaEF.Models.Equipment>();
+            foreach(var equipment in fullEquipmentList)
+            {
+                if (equipment.Type == selectedType)
+                    filteredEquipmentList.Add(equipment);
+            }
+
+            equipmentListView.ItemsSource = filteredEquipmentList;
+        }
+
+        private void equipmentListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            LeagueOfNinjaEF.Models.Equipment selectedEquipment = (sender as ListView).SelectedItem as LeagueOfNinjaEF.Models.Equipment;
+            healthPointsTextBox.Text = selectedEquipment.Health.ToString();
+            manaTextBox.Text = selectedEquipment.Mana.ToString();
+            staminaTextBox.Text = selectedEquipment.Stamina.ToString();
+            StrengthTextBox.Text = selectedEquipment.Strength.ToString();
+            IntelligenceTextBox.Text = selectedEquipment.Intelligence.ToString();
+            AgilityTextBox.Text = selectedEquipment.Dexterity.ToString();
+            PriceTextBox.Text = selectedEquipment.Price.ToString();
         }
     }
 }
