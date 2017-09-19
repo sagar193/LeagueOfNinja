@@ -22,25 +22,10 @@ namespace LeagueOfNinja
     /// </summary>
     public partial class MainWindow : Window
     {
-        List<LeagueOfNinjaEF.Models.Equipment> fullEquipmentList;
         public MainWindow()
         {
+            Views.selectNinja popupWindow = new Views.selectNinja();
             InitializeComponent();
-            fullEquipmentList = equipmentListView.ItemsSource as List<LeagueOfNinjaEF.Models.Equipment>;
-        }
-
-        private void typeComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            LeagueOfNinjaEF.Models.Type selectedType = (sender as ComboBox).SelectedItem as LeagueOfNinjaEF.Models.Type;
-
-            List<LeagueOfNinjaEF.Models.Equipment> filteredEquipmentList = new List<LeagueOfNinjaEF.Models.Equipment>();
-            foreach(var equipment in fullEquipmentList)
-            {
-                if (equipment.Type == selectedType)
-                    filteredEquipmentList.Add(equipment);
-            }
-
-            equipmentListView.ItemsSource = filteredEquipmentList;
         }
 
         private void equipmentListView_SelectionChanged(object sender, SelectionChangedEventArgs e)

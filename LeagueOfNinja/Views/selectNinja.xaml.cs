@@ -14,5 +14,10 @@ namespace LeagueOfNinja.Views
         {
             InitializeComponent();
         }
+
+        private void ninjaSelectListView_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            this.Close();
+        }
     }
 }

@@ -6,8 +6,9 @@
         xmlns:ignore="http://www.galasoft.ch/ignore"
         mc:Ignorable="d ignore"
         Title="selectNinja" Height="450" Width="350"
-        DataContext="{Binding ViewModelName, Source={StaticResource Locator}}">
+        DataContext="{Binding Main, Source={StaticResource Locator}}">
 
     <Grid>
+        <ListView x:Name="ninjaSelectListView" FontSize="14" HorizontalAlignment="Stretch" DisplayMemberPath="Name" ItemsSource="{Binding ninjaList}" SelectedItem="{Binding selectedNinja}" MouseLeftButtonDown="ninjaSelectListView_MouseLeftButtonDown"/>
     </Grid>
 </Window>

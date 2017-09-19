@@ -138,6 +138,36 @@ namespace LeagueOfNinja.ViewModel
             }
         }
 
+        /// <summary>
+        /// The <see cref="selectedNinja" /> property's name.
+        /// </summary>
+        public const string selectedNinjaPropertyName = "selectedNinja";
+
+        private Ninja _selectedNinja = new Ninja();
+
+        /// <summary>
+        /// Sets and gets the selectedNinja property.
+        /// Changes to that property's value raise the PropertyChanged event. 
+        /// </summary>
+        public Ninja selectedNinja
+        {
+            get
+            {
+                return _selectedNinja;
+            }
+
+            set
+            {
+                if (_selectedNinja == value)
+                {
+                    return;
+                }
+
+                _selectedNinja = value;
+                RaisePropertyChanged(selectedNinjaPropertyName);
+            }
+        }
+
         ///No observer|observable paramaters
         public List<Equipment> fullEquipmentList;
 
@@ -158,7 +188,13 @@ namespace LeagueOfNinja.ViewModel
 
             Ninja ninja1 = new Ninja();
             ninja1.Name = "ninja1";
+            ninja1.Helmet = EquipmentList[2];
+            ninja1.Chest = EquipmentList[4];
             ninjaList.Add(ninja1);
+
+            Ninja ninja2 = new Ninja();
+            ninja2.Name = "ninja2";
+            ninjaList.Add(ninja2);
         }
 
         private void fillTypeList()
