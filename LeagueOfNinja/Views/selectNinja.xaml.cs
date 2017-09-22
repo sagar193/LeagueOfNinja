@@ -15,9 +15,15 @@ namespace LeagueOfNinja.Views
             InitializeComponent();
         }
 
-        private void ninjaSelectListView_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        private void ninjaSelectOkButton_Click(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            if (ninjaSelectListView.SelectedItem != null)
+            {
+                MainWindow main = new MainWindow();
+                App.Current.MainWindow = main;
+                this.Close();
+                main.Show();
+            }
         }
     }
 }

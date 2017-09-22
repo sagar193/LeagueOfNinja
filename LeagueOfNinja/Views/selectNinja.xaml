@@ -8,7 +8,19 @@
         Title="selectNinja" Height="450" Width="350"
         DataContext="{Binding Main, Source={StaticResource Locator}}">
 
-    <Grid>
-        <ListView x:Name="ninjaSelectListView" FontSize="14" HorizontalAlignment="Stretch" DisplayMemberPath="Name" ItemsSource="{Binding ninjaList}" SelectedItem="{Binding selectedNinja}" MouseLeftButtonDown="ninjaSelectListView_MouseLeftButtonDown"/>
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="30"/>
+        </Grid.RowDefinitions>
+        <ListView x:Name="ninjaSelectListView" Grid.Row="0" FontSize="14" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" DisplayMemberPath="Name" ItemsSource="{Binding ninjaList}" SelectedItem="{Binding selectedNinja}"/>
+        <Grid Grid.Row="1" Height="20" Margin="3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Button x:Name="ninjaSelectOkButton" Grid.Column="1" Content="Ok" Click="ninjaSelectOkButton_Click"/>
+        </Grid>
     </Grid>
 </Window>

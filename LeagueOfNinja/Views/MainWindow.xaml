@@ -25,7 +25,7 @@
             <ComboBox DockPanel.Dock="Top" Grid.Column="0" x:Name="typeComboBox" VerticalAlignment="Top" Height="33.96" FontSize="14" Padding="7.5" DisplayMemberPath="Name" ItemsSource="{Binding typeList}" SelectedItem="{Binding selectedType}"/>
 
             <!--Listview with gear of the selected type-->
-            <ListView x:Name="equipmentListView" FontSize="14" HorizontalAlignment="Stretch" DisplayMemberPath="Name" ItemsSource="{Binding EquipmentList}" SelectionChanged="equipmentListView_SelectionChanged"/>
+            <ListView x:Name="equipmentListView" Grid.Column="0" FontSize="14" HorizontalAlignment="Stretch" DisplayMemberPath="Name" ItemsSource="{Binding EquipmentList}" SelectionChanged="equipmentListView_SelectionChanged"/>
 
         </DockPanel>
         <!--Grid Column 2-->

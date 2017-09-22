@@ -24,7 +24,6 @@ namespace LeagueOfNinja
     {
         public MainWindow()
         {
-            Views.selectNinja popupWindow = new Views.selectNinja();
             InitializeComponent();
         }
 
