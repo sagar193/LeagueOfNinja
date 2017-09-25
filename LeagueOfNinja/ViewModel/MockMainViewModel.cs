@@ -168,6 +168,67 @@ namespace LeagueOfNinja.ViewModel
             }
         }
 
+        /// <summary>
+        /// The <see cref="selectedEquipment" /> property's name.
+        /// </summary>
+        public const string selectedEquipmentPropertyName = "selectedEquipment";
+
+        private Equipment _SelectedEquipment = null;
+
+        /// <summary>
+        /// Sets and gets the selectedEquipment property.
+        /// Changes to that property's value raise the PropertyChanged event. 
+        /// </summary>
+        public Equipment selectedEquipment
+        {
+            get
+            {
+                return _SelectedEquipment;
+            }
+
+            set
+            {
+                if (_SelectedEquipment == value)
+                {
+                    return;
+                }
+
+                _SelectedEquipment = value;
+                selectedEquipmentChanged();
+                RaisePropertyChanged(selectedEquipmentPropertyName);
+            }
+        }
+
+        /// <summary>
+        /// The <see cref="differenceEquipment" /> property's name.
+        /// </summary>
+        public const string differenceEquipmentPropertyName = "differenceEquipment";
+
+        private Equipment _differenceEquipment = null;
+
+        /// <summary>
+        /// Sets and gets the differenceEquipment property.
+        /// Changes to that property's value raise the PropertyChanged event. 
+        /// </summary>
+        public Equipment differenceEquipment
+        {
+            get
+            {
+                return _differenceEquipment;
+            }
+
+            set
+            {
+                if (_differenceEquipment == value)
+                {
+                    return;
+                }
+
+                _differenceEquipment = value;
+                RaisePropertyChanged(differenceEquipmentPropertyName);
+            }
+        }
+
         ///No observer|observable paramaters
         public List<Equipment> fullEquipmentList;
 
@@ -182,6 +243,9 @@ namespace LeagueOfNinja.ViewModel
 
         }
 
+        /// <summary>
+        /// Should do ninjaGetAll
+        /// </summary>
         private void fillNinjaList()
         {
             ninjaList = new List<Ninja>();
@@ -197,6 +261,9 @@ namespace LeagueOfNinja.ViewModel
             ninjaList.Add(ninja2);
         }
 
+        /// <summary>
+        /// should do typeGetAll
+        /// </summary>
         private void fillTypeList()
         {
             typeList = new List<LeagueOfNinjaEF.Models.Type>();
@@ -208,7 +275,7 @@ namespace LeagueOfNinja.ViewModel
             #endregion
 
             #region Set Types
-            typeHoofd.Name = "Hoofd";
+            typeHoofd.Name = "Head";
             typeChest.Name = "Chest";
             typeLegs.Name = "Legs";
             #endregion
@@ -220,6 +287,9 @@ namespace LeagueOfNinja.ViewModel
             #endregion
         }
 
+        /// <summary>
+        /// should do equipmentGetAll
+        /// </summary>
         private void fillEquipmentList()
         {
             EquipmentList = new List<Equipment>();
@@ -341,9 +411,12 @@ namespace LeagueOfNinja.ViewModel
 
         }
 
+        /// <summary>
+        /// Should do database equipmentGetWithType.
+        /// Type it should use is var selectedType
+        /// </summary>
         private void selectedTypeChanged()
         {
-            System.Console.WriteLine("buttonPressed");
             List<LeagueOfNinjaEF.Models.Equipment> filteredEquipmentList = new List<LeagueOfNinjaEF.Models.Equipment>();
             foreach (var equipment in fullEquipmentList)
             {
@@ -351,6 +424,62 @@ namespace LeagueOfNinja.ViewModel
                     filteredEquipmentList.Add(equipment);
             }
             EquipmentList = filteredEquipmentList;
+        }
+
+        private void selectedEquipmentChanged()
+        {
+            if (selectedEquipment == null)
+            {
+                setDifferenceEquipment(null);
+                return;
+            }
+
+            string selectedType = selectedEquipment.Type.Name;
+            Equipment equipedEquipment = null;
+
+            switch (selectedType)
+            {
+                case "Head":
+                    equipedEquipment = selectedNinja.Helmet;
+                    break;
+                case "Chest":
+                    equipedEquipment = selectedNinja.Chest;
+                    break;
+                case "Legs":
+                    equipedEquipment = selectedNinja.Legs;
+                    break;
+                case "Gloves":
+                    equipedEquipment = selectedNinja.Gloves;
+                    break;
+                case "Shoes":
+                    equipedEquipment = selectedNinja.Shoes;
+                    break;
+                default:
+                    break;
+            }
+
+            setDifferenceEquipment(equipedEquipment);
+
+        }
+
+        private void setDifferenceEquipment(Equipment equipedEquipment)
+        {
+            Equipment test = new Equipment();
+
+            if (equipedEquipment == null)
+            {
+                differenceEquipment = test;
+                return;
+            }
+
+            test.Health = equipedEquipment.Health - selectedEquipment.Health;
+            test.Mana = equipedEquipment.Mana - selectedEquipment.Mana;
+            test.Stamina = equipedEquipment.Stamina - selectedEquipment.Stamina;
+            test.Strength = equipedEquipment.Strength - selectedEquipment.Strength;
+            test.Intelligence = equipedEquipment.Intelligence - selectedEquipment.Intelligence;
+            test.Dexterity = equipedEquipment.Dexterity - selectedEquipment.Dexterity;
+            test.Price = equipedEquipment.Price - selectedEquipment.Price;
+            differenceEquipment = test;
         }
     }
 }

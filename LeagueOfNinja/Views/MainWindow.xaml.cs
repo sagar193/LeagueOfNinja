@@ -26,17 +26,5 @@ namespace LeagueOfNinja
         {
             InitializeComponent();
         }
-
-        private void equipmentListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            LeagueOfNinjaEF.Models.Equipment selectedEquipment = (sender as ListView).SelectedItem as LeagueOfNinjaEF.Models.Equipment;
-            healthPointsTextBox.Text = selectedEquipment.Health.ToString();
-            manaTextBox.Text = selectedEquipment.Mana.ToString();
-            staminaTextBox.Text = selectedEquipment.Stamina.ToString();
-            StrengthTextBox.Text = selectedEquipment.Strength.ToString();
-            IntelligenceTextBox.Text = selectedEquipment.Intelligence.ToString();
-            AgilityTextBox.Text = selectedEquipment.Dexterity.ToString();
-            PriceTextBox.Text = selectedEquipment.Price.ToString();
-        }
     }
 }
