@@ -74,8 +74,8 @@
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <Button Grid.Column="0" Content="Equip" IsEnabled="False"/>
-                <Button Grid.Column="2" Content="Unequip" IsEnabled="False"/>
+                <Button Command="{Binding equipButton}" Grid.Column="0" Content="Equip"/>
+                <Button Command="{Binding unequipButton}" Grid.Column="2" Content="Unequip"/>
             </Grid>
         </StackPanel>
         <!--Grid Column 3-->
@@ -94,16 +94,16 @@
                     <TextBlock HorizontalAlignment="Stretch" TextWrapping="Wrap" VerticalAlignment="Center" Margin="5,2" Text="Stamina: "/>
                     <TextBlock HorizontalAlignment="Stretch" TextWrapping="Wrap" VerticalAlignment="Center" Margin="5,2" Text="Strength: "/>
                     <TextBlock HorizontalAlignment="Stretch" TextWrapping="Wrap" VerticalAlignment="Center" Margin="5,2" Text="Intelligence: "/>
-                    <TextBlock HorizontalAlignment="Stretch" TextWrapping="Wrap" VerticalAlignment="Center" Margin="5,2" Text="Agility: "/>
+                    <TextBlock HorizontalAlignment="Stretch" TextWrapping="Wrap" VerticalAlignment="Center" Margin="5,2" Text="Dexterity: "/>
                 </StackPanel>
                 <!--All stats values-->
                 <StackPanel Grid.Column="1" Margin="0,0,0,10" VerticalAlignment="Center">
-                    <TextBlock HorizontalAlignment="Stretch" Text="200" Margin="5,2" x:Name="totalHealthPointsTextBox"/>
-                    <TextBlock HorizontalAlignment="Stretch" Text="80" Margin="5,2" x:Name="totalManaTextBox"/>
-                    <TextBlock HorizontalAlignment="Stretch" Text="130" Margin="5,2" x:Name="totalStaminaTextBox"/>
-                    <TextBlock HorizontalAlignment="Stretch" Text="9" Margin="5,2" x:Name="totalStrengthTextBox"/>
-                    <TextBlock HorizontalAlignment="Stretch" Text="3" Margin="5,2" x:Name="totalIntelligenceTextBox"/>
-                    <TextBlock HorizontalAlignment="Stretch" Text="5" Margin="5,2" x:Name="totalAgilityTextBox"/>
+                    <TextBlock HorizontalAlignment="Stretch" Text="{Binding totalEquipment.Health}" Margin="5,2" x:Name="totalHealthPointsTextBox"/>
+                    <TextBlock HorizontalAlignment="Stretch" Text="{Binding totalEquipment.Mana}" Margin="5,2" x:Name="totalManaTextBox"/>
+                    <TextBlock HorizontalAlignment="Stretch" Text="{Binding totalEquipment.Stamina}" Margin="5,2" x:Name="totalStaminaTextBox"/>
+                    <TextBlock HorizontalAlignment="Stretch" Text="{Binding totalEquipment.Strength}" Margin="5,2" x:Name="totalStrengthTextBox"/>
+                    <TextBlock HorizontalAlignment="Stretch" Text="{Binding totalEquipment.Intelligence}" Margin="5,2" x:Name="totalIntelligenceTextBox"/>
+                    <TextBlock HorizontalAlignment="Stretch" Text="{Binding totalEquipment.Dexterity}" Margin="5,2" x:Name="totalAgilityTextBox"/>
                 </StackPanel>
             </Grid>
         </StackPanel>

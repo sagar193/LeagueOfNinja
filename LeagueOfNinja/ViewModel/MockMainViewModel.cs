@@ -164,6 +164,7 @@ namespace LeagueOfNinja.ViewModel
                 }
 
                 _selectedNinja = value;
+                calculateTotalStats();
                 RaisePropertyChanged(selectedNinjaPropertyName);
             }
         }
@@ -229,9 +230,42 @@ namespace LeagueOfNinja.ViewModel
             }
         }
 
-        ///No observer|observable paramaters
-        public List<Equipment> fullEquipmentList;
+        /// <summary>
+        /// The <see cref="totalEquipment" /> property's name.
+        /// </summary>
+        public const string totalEquipmentPropertyName = "totalEquipment";
 
+        private Equipment _totalEquipment = null;
+
+        /// <summary>
+        /// Sets and gets the totalEquipment property.
+        /// Changes to that property's value raise the PropertyChanged event. 
+        /// </summary>
+        public Equipment totalEquipment
+        {
+            get
+            {
+                return _totalEquipment;
+            }
+
+            set
+            {
+                if (_totalEquipment == value)
+                {
+                    return;
+                }
+
+                _totalEquipment = value;
+                RaisePropertyChanged(totalEquipmentPropertyName);
+            }
+        }
+
+        public RelayCommand equipButton { get; private set; }
+        public RelayCommand unequipButton { get; private set; }
+
+        ///No observer|observable paramaters(only for mocking)
+        public List<Equipment> fullEquipmentList;
+        
         /// <summary>
         /// Initializes a new instance of the MockMainViewModel class.
         /// </summary>
@@ -241,6 +275,8 @@ namespace LeagueOfNinja.ViewModel
             fillEquipmentList();
             fillNinjaList();
 
+            equipButton = new RelayCommand(equipEquipment, canEquipEquipment);
+            unequipButton = new RelayCommand(unequipEquipment, canUnequipEquipment);
         }
 
         /// <summary>
@@ -426,6 +462,9 @@ namespace LeagueOfNinja.ViewModel
             EquipmentList = filteredEquipmentList;
         }
 
+        /// <summary>
+        /// is being executed everytime the selected equipment is changed
+        /// </summary>
         private void selectedEquipmentChanged()
         {
             if (selectedEquipment == null)
@@ -434,6 +473,15 @@ namespace LeagueOfNinja.ViewModel
                 return;
             }
 
+            Equipment equipedEquipment = getEquipedEquipmentOfSelectedType();
+
+            setDifferenceEquipment(equipedEquipment);
+
+        }
+        ///<summary/>
+        /// <returns>equipment which is equiped in the currently selected slot</returns>
+        private Equipment getEquipedEquipmentOfSelectedType()
+        {
             string selectedType = selectedEquipment.Type.Name;
             Equipment equipedEquipment = null;
 
@@ -458,10 +506,14 @@ namespace LeagueOfNinja.ViewModel
                     break;
             }
 
-            setDifferenceEquipment(equipedEquipment);
-
+            return equipedEquipment;
         }
 
+        /// <summary>
+        /// used to calculate the difference in equipment
+        /// between the equiped item and the selected item
+        /// </summary>
+        /// <param name="equipedEquipment"></param>
         private void setDifferenceEquipment(Equipment equipedEquipment)
         {
             Equipment test = new Equipment();
@@ -480,6 +532,150 @@ namespace LeagueOfNinja.ViewModel
             test.Dexterity = equipedEquipment.Dexterity - selectedEquipment.Dexterity;
             test.Price = equipedEquipment.Price - selectedEquipment.Price;
             differenceEquipment = test;
+        }
+
+
+        /// <summary>
+        /// calculate the sum off all the equipment same, as nonmock
+        /// </summary>
+        private void calculateTotalStats()
+        {
+            Equipment total = new Equipment();
+
+            if (selectedNinja.Chest != null)
+            {
+                addEquipmentTo(total, selectedNinja.Chest);
+            }
+            if (selectedNinja.Helmet != null)
+            {
+                addEquipmentTo(total, selectedNinja.Helmet);
+            }
+            if (selectedNinja.Legs != null)
+            {
+                addEquipmentTo(total, selectedNinja.Legs);
+            }
+            if (selectedNinja.Gloves != null)
+            {
+                addEquipmentTo(total, selectedNinja.Gloves);
+            }
+            if (selectedNinja.Shoes != null)
+            {
+                addEquipmentTo(total, selectedNinja.Shoes);
+            }
+
+            totalEquipment = total;
+        }
+
+        /// <summary>
+        /// used to calculate the sum off all the equipment, same as nonmock
+        /// </summary>
+        /// <param name="total">the eventually sum of the equipment</param>
+        /// <param name="toAdd">equipment which stats should be added to the sum</param>
+        /// <returns></returns>
+        private Equipment addEquipmentTo(Equipment total, Equipment toAdd)
+        {
+            total.Health += toAdd.Health;
+            total.Mana += toAdd.Mana;
+            total.Stamina += toAdd.Stamina;
+            total.Strength += toAdd.Strength;
+            total.Intelligence += toAdd.Intelligence;
+            total.Dexterity += toAdd.Dexterity;
+            total.Price += toAdd.Price;
+
+            return total;
+        }
+
+
+        /// <summary>
+        /// should do a put with the selected ninja
+        /// </summary>
+        public void equipEquipment()
+        {
+            string selectedType = selectedEquipment.Type.Name;
+
+            switch (selectedType)
+            {
+                case "Head":
+                    selectedNinja.Helmet = selectedEquipment;
+                    break;
+                case "Chest":
+                    selectedNinja.Chest = selectedEquipment;
+                    break;
+                case "Legs":
+                    selectedNinja.Legs = selectedEquipment;
+                    break;
+                case "Gloves":
+                    selectedNinja.Gloves = selectedEquipment;
+                    break;
+                case "Shoes":
+                    selectedNinja.Shoes = selectedEquipment;
+                    break;
+                default:
+                    break;
+            }
+
+            calculateTotalStats();
+        }
+
+        /// <summary>
+        /// should do a deleteEquipment from ninja
+        /// </summary>
+        public void unequipEquipment()
+        {
+            string selectedType = selectedEquipment.Type.Name;
+
+            switch (selectedType)
+            {
+                case "Head":
+                    selectedNinja.Helmet = null;
+                    break;
+                case "Chest":
+                    selectedNinja.Chest = null;
+                    break;
+                case "Legs":
+                    selectedNinja.Legs = null;
+                    break;
+                case "Gloves":
+                    selectedNinja.Gloves = null;
+                    break;
+                case "Shoes":
+                    selectedNinja.Shoes = null;
+                    break;
+                default:
+                    break;
+            }
+
+            calculateTotalStats();
+        }
+
+        /// <summary>
+        /// view things, same as nonmock
+        /// </summary>
+        /// <returns>if you can equip the selected item</returns>
+        public bool canEquipEquipment()
+        {
+            if (selectedEquipment == null)
+                return false;
+
+            if (selectedEquipment == getEquipedEquipmentOfSelectedType())
+                return false;
+
+            return true;
+        }
+
+        /// <summary>
+        /// view things, same as nonmock
+        /// </summary>
+        /// <returns>if you can unequip the selected item</returns>
+        public bool canUnequipEquipment()
+        {
+            if (selectedEquipment == null)
+                return false;
+
+            if (selectedEquipment == getEquipedEquipmentOfSelectedType())
+                return true;
+
+            return false;
         }
     }
 }
