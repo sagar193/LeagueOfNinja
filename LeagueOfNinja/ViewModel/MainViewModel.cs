@@ -1,6 +1,8 @@
 using GalaSoft.MvvmLight;
 using LeagueOfNinjaEF.Models;
 using LeagueOfNinjaEF.DAL;
+using System.Collections.Generic;
+using GalaSoft.MvvmLight.CommandWpf;
 
 namespace LeagueOfNinja.ViewModel
 {
@@ -16,19 +18,16 @@ namespace LeagueOfNinja.ViewModel
     /// See http://www.galasoft.ch/mvvm
     /// </para>
     /// </summary>
-    public class MainViewModel : ViewModelBase, IMainViewModel
+    public class MainViewModel 
     {
         private UnitOfWork UOW;
 
         /// <summary>
         /// Initializes a new instance of the MainViewModel class.
         /// </summary>
-        public MainViewModel()
-        {
-            
-        }
-
-
         
+        ///All Parameters
+        
+
     }
 }

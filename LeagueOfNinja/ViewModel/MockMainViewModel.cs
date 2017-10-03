@@ -1,9 +1,7 @@
 ﻿using LeagueOfNinjaEF.Models;
 using GalaSoft.MvvmLight;
 using System.Collections.Generic;
-using System;
 using GalaSoft.MvvmLight.CommandWpf;
-using System.Windows.Input;
 
 namespace LeagueOfNinja.ViewModel
 {
@@ -13,255 +11,9 @@ namespace LeagueOfNinja.ViewModel
     /// See http://www.galasoft.ch/mvvm
     /// </para>
     /// </summary>
-    public class MockMainViewModel : ViewModelBase, IMainViewModel
+    public class MockMainViewModel : IMainViewModel
     {
         ///All Parameters
-
-        /// <summary>
-        /// The <see cref="typeList" /> property's name.
-        /// </summary>
-        public const string typeListPropertyName = "typeList";
-
-        private List<LeagueOfNinjaEF.Models.Type> _typeList = new List<LeagueOfNinjaEF.Models.Type>();
-
-        /// <summary>
-        /// Sets and gets the typeList property.
-        /// Changes to that property's value raise the PropertyChanged event. 
-        /// </summary>
-        public List<LeagueOfNinjaEF.Models.Type> typeList
-        {
-            get
-            {
-                return _typeList;
-            }
-
-            set
-            {
-                if (_typeList == value)
-                {
-                    return;
-                }
-
-                _typeList = value;
-                RaisePropertyChanged(typeListPropertyName);
-            }
-        }
-
-        /// <summary>
-        /// The <see cref="EquipmentList" /> property's name.
-        /// </summary>
-        public const string EquipmentListPropertyName = "EquipmentList";
-
-        private List<Equipment> _EquipmentList = new List<Equipment>();
-
-        /// <summary>
-        /// Sets and gets the EquipmentList property.
-        /// Changes to that property's value raise the PropertyChanged event. 
-        /// </summary>
-        public List<Equipment> EquipmentList
-        {
-            get
-            {
-                return _EquipmentList;
-            }
-
-            set
-            {
-                if (_EquipmentList == value)
-                {
-                    return;
-                }
-
-                _EquipmentList = value;
-                RaisePropertyChanged(EquipmentListPropertyName);
-            }
-        }
-
-        /// <summary>
-        /// The <see cref="ninjaList" /> property's name.
-        /// </summary>
-        public const string ninjaListPropertyName = "ninjaList";
-
-        private List<Ninja> _ninjaList = new List<Ninja>();
-
-        /// <summary>
-        /// Sets and gets the ninjaList property.
-        /// Changes to that property's value raise the PropertyChanged event. 
-        /// </summary>
-        public List<Ninja> ninjaList
-        {
-            get
-            {
-                return _ninjaList;
-            }
-
-            set
-            {
-                if (_ninjaList == value)
-                {
-                    return;
-                }
-
-                _ninjaList = value;
-                RaisePropertyChanged(ninjaListPropertyName);
-            }
-        }
-
-        /// <summary>
-            /// The <see cref="selectedType" /> property's name.
-            /// </summary>
-        public const string selectedTypePropertyName = "selectedType";
-
-        private LeagueOfNinjaEF.Models.Type _selectedType = new LeagueOfNinjaEF.Models.Type();
-
-        /// <summary>
-        /// Sets and gets the selectedType property.
-        /// Changes to that property's value raise the PropertyChanged event. 
-        /// </summary>
-        public LeagueOfNinjaEF.Models.Type selectedType
-        {
-            get
-            {
-                return _selectedType;
-            }
-
-            set
-            {
-                if (_selectedType == value)
-                {
-                    return;
-                }
-
-                _selectedType = value;
-                RaisePropertyChanged(selectedTypePropertyName);
-                selectedTypeChanged();
-            }
-        }
-
-        /// <summary>
-        /// The <see cref="selectedNinja" /> property's name.
-        /// </summary>
-        public const string selectedNinjaPropertyName = "selectedNinja";
-
-        private Ninja _selectedNinja = new Ninja();
-
-        /// <summary>
-        /// Sets and gets the selectedNinja property.
-        /// Changes to that property's value raise the PropertyChanged event. 
-        /// </summary>
-        public Ninja selectedNinja
-        {
-            get
-            {
-                return _selectedNinja;
-            }
-
-            set
-            {
-                if (_selectedNinja == value)
-                {
-                    return;
-                }
-
-                _selectedNinja = value;
-                calculateTotalStats();
-                RaisePropertyChanged(selectedNinjaPropertyName);
-            }
-        }
-
-        /// <summary>
-        /// The <see cref="selectedEquipment" /> property's name.
-        /// </summary>
-        public const string selectedEquipmentPropertyName = "selectedEquipment";
-
-        private Equipment _SelectedEquipment = null;
-
-        /// <summary>
-        /// Sets and gets the selectedEquipment property.
-        /// Changes to that property's value raise the PropertyChanged event. 
-        /// </summary>
-        public Equipment selectedEquipment
-        {
-            get
-            {
-                return _SelectedEquipment;
-            }
-
-            set
-            {
-                if (_SelectedEquipment == value)
-                {
-                    return;
-                }
-
-                _SelectedEquipment = value;
-                selectedEquipmentChanged();
-                RaisePropertyChanged(selectedEquipmentPropertyName);
-            }
-        }
-
-        /// <summary>
-        /// The <see cref="differenceEquipment" /> property's name.
-        /// </summary>
-        public const string differenceEquipmentPropertyName = "differenceEquipment";
-
-        private Equipment _differenceEquipment = null;
-
-        /// <summary>
-        /// Sets and gets the differenceEquipment property.
-        /// Changes to that property's value raise the PropertyChanged event. 
-        /// </summary>
-        public Equipment differenceEquipment
-        {
-            get
-            {
-                return _differenceEquipment;
-            }
-
-            set
-            {
-                if (_differenceEquipment == value)
-                {
-                    return;
-                }
-
-                _differenceEquipment = value;
-                RaisePropertyChanged(differenceEquipmentPropertyName);
-            }
-        }
-
-        /// <summary>
-        /// The <see cref="totalEquipment" /> property's name.
-        /// </summary>
-        public const string totalEquipmentPropertyName = "totalEquipment";
-
-        private Equipment _totalEquipment = null;
-
-        /// <summary>
-        /// Sets and gets the totalEquipment property.
-        /// Changes to that property's value raise the PropertyChanged event. 
-        /// </summary>
-        public Equipment totalEquipment
-        {
-            get
-            {
-                return _totalEquipment;
-            }
-
-            set
-            {
-                if (_totalEquipment == value)
-                {
-                    return;
-                }
-
-                _totalEquipment = value;
-                RaisePropertyChanged(totalEquipmentPropertyName);
-            }
-        }
-
-        public RelayCommand equipButton { get; private set; }
-        public RelayCommand unequipButton { get; private set; }
 
         ///No observer|observable paramaters(only for mocking)
         public List<Equipment> fullEquipmentList;
@@ -282,7 +34,7 @@ namespace LeagueOfNinja.ViewModel
         /// <summary>
         /// Should do ninjaGetAll
         /// </summary>
-        private void fillNinjaList()
+        protected override void fillNinjaList()
         {
             ninjaList = new List<Ninja>();
 
@@ -300,7 +52,7 @@ namespace LeagueOfNinja.ViewModel
         /// <summary>
         /// should do typeGetAll
         /// </summary>
-        private void fillTypeList()
+        protected override void fillTypeList()
         {
             typeList = new List<LeagueOfNinjaEF.Models.Type>();
 
@@ -326,7 +78,7 @@ namespace LeagueOfNinja.ViewModel
         /// <summary>
         /// should do equipmentGetAll
         /// </summary>
-        private void fillEquipmentList()
+        protected override void fillEquipmentList()
         {
             EquipmentList = new List<Equipment>();
 
@@ -451,7 +203,7 @@ namespace LeagueOfNinja.ViewModel
         /// Should do database equipmentGetWithType.
         /// Type it should use is var selectedType
         /// </summary>
-        private void selectedTypeChanged()
+        protected override void selectedTypeChanged()
         {
             List<LeagueOfNinjaEF.Models.Equipment> filteredEquipmentList = new List<LeagueOfNinjaEF.Models.Equipment>();
             foreach (var equipment in fullEquipmentList)
@@ -463,133 +215,9 @@ namespace LeagueOfNinja.ViewModel
         }
 
         /// <summary>
-        /// is being executed everytime the selected equipment is changed
-        /// </summary>
-        private void selectedEquipmentChanged()
-        {
-            if (selectedEquipment == null)
-            {
-                setDifferenceEquipment(null);
-                return;
-            }
-
-            Equipment equipedEquipment = getEquipedEquipmentOfSelectedType();
-
-            setDifferenceEquipment(equipedEquipment);
-
-        }
-        ///<summary/>
-        /// <returns>equipment which is equiped in the currently selected slot</returns>
-        private Equipment getEquipedEquipmentOfSelectedType()
-        {
-            string selectedType = selectedEquipment.Type.Name;
-            Equipment equipedEquipment = null;
-
-            switch (selectedType)
-            {
-                case "Head":
-                    equipedEquipment = selectedNinja.Helmet;
-                    break;
-                case "Chest":
-                    equipedEquipment = selectedNinja.Chest;
-                    break;
-                case "Legs":
-                    equipedEquipment = selectedNinja.Legs;
-                    break;
-                case "Gloves":
-                    equipedEquipment = selectedNinja.Gloves;
-                    break;
-                case "Shoes":
-                    equipedEquipment = selectedNinja.Shoes;
-                    break;
-                default:
-                    break;
-            }
-
-            return equipedEquipment;
-        }
-
-        /// <summary>
-        /// used to calculate the difference in equipment
-        /// between the equiped item and the selected item
-        /// </summary>
-        /// <param name="equipedEquipment"></param>
-        private void setDifferenceEquipment(Equipment equipedEquipment)
-        {
-            Equipment test = new Equipment();
-
-            if (equipedEquipment == null)
-            {
-                differenceEquipment = test;
-                return;
-            }
-
-            test.Health = equipedEquipment.Health - selectedEquipment.Health;
-            test.Mana = equipedEquipment.Mana - selectedEquipment.Mana;
-            test.Stamina = equipedEquipment.Stamina - selectedEquipment.Stamina;
-            test.Strength = equipedEquipment.Strength - selectedEquipment.Strength;
-            test.Intelligence = equipedEquipment.Intelligence - selectedEquipment.Intelligence;
-            test.Dexterity = equipedEquipment.Dexterity - selectedEquipment.Dexterity;
-            test.Price = equipedEquipment.Price - selectedEquipment.Price;
-            differenceEquipment = test;
-        }
-
-
-        /// <summary>
-        /// calculate the sum off all the equipment same, as nonmock
-        /// </summary>
-        private void calculateTotalStats()
-        {
-            Equipment total = new Equipment();
-
-            if (selectedNinja.Chest != null)
-            {
-                addEquipmentTo(total, selectedNinja.Chest);
-            }
-            if (selectedNinja.Helmet != null)
-            {
-                addEquipmentTo(total, selectedNinja.Helmet);
-            }
-            if (selectedNinja.Legs != null)
-            {
-                addEquipmentTo(total, selectedNinja.Legs);
-            }
-            if (selectedNinja.Gloves != null)
-            {
-                addEquipmentTo(total, selectedNinja.Gloves);
-            }
-            if (selectedNinja.Shoes != null)
-            {
-                addEquipmentTo(total, selectedNinja.Shoes);
-            }
-
-            totalEquipment = total;
-        }
-
-        /// <summary>
-        /// used to calculate the sum off all the equipment, same as nonmock
-        /// </summary>
-        /// <param name="total">the eventually sum of the equipment</param>
-        /// <param name="toAdd">equipment which stats should be added to the sum</param>
-        /// <returns></returns>
-        private Equipment addEquipmentTo(Equipment total, Equipment toAdd)
-        {
-            total.Health += toAdd.Health;
-            total.Mana += toAdd.Mana;
-            total.Stamina += toAdd.Stamina;
-            total.Strength += toAdd.Strength;
-            total.Intelligence += toAdd.Intelligence;
-            total.Dexterity += toAdd.Dexterity;
-            total.Price += toAdd.Price;
-
-            return total;
-        }
-
-
-        /// <summary>
         /// should do a put with the selected ninja
         /// </summary>
-        public void equipEquipment()
+        public override void equipEquipment()
         {
             string selectedType = selectedEquipment.Type.Name;
 
@@ -620,7 +248,7 @@ namespace LeagueOfNinja.ViewModel
         /// <summary>
         /// should do a deleteEquipment from ninja
         /// </summary>
-        public void unequipEquipment()
+        public override void unequipEquipment()
         {
             string selectedType = selectedEquipment.Type.Name;
 
@@ -646,36 +274,6 @@ namespace LeagueOfNinja.ViewModel
             }
 
             calculateTotalStats();
-        }
-
-        /// <summary>
-        /// view things, same as nonmock
-        /// </summary>
-        /// <returns>if you can equip the selected item</returns>
-        public bool canEquipEquipment()
-        {
-            if (selectedEquipment == null)
-                return false;
-
-            if (selectedEquipment == getEquipedEquipmentOfSelectedType())
-                return false;
-
-            return true;
-        }
-
-        /// <summary>
-        /// view things, same as nonmock
-        /// </summary>
-        /// <returns>if you can unequip the selected item</returns>
-        public bool canUnequipEquipment()
-        {
-            if (selectedEquipment == null)
-                return false;
-
-            if (selectedEquipment == getEquipedEquipmentOfSelectedType())
-                return true;
-
-            return false;
         }
     }
 }
