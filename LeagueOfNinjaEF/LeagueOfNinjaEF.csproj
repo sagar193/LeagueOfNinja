@@ -51,10 +51,15 @@
   <ItemGroup>
     <Compile Include="DAL\LoNInitializer.cs" />
     <Compile Include="DAL\LoNContext.cs" />
+    <Compile Include="DAL\NinjaRepository.cs" />
     <Compile Include="DAL\UnitOfWork.cs" />
     <Compile Include="Migrations\201705290835591_InitialCreate.cs" />
     <Compile Include="Migrations\201705290835591_InitialCreate.Designer.cs">
       <DependentUpon>201705290835591_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710031348147_addedSomeFields.cs" />
+    <Compile Include="Migrations\201710031348147_addedSomeFields.Designer.cs">
+      <DependentUpon>201710031348147_addedSomeFields.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Equipment.cs" />
@@ -71,6 +76,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201705290835591_InitialCreate.resx">
       <DependentUpon>201705290835591_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710031348147_addedSomeFields.resx">
+      <DependentUpon>201710031348147_addedSomeFields.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -26,5 +26,21 @@ namespace LeagueOfNinja
         {
             InitializeComponent();
         }
+
+        private void PriceChangeTextBox_SourceUpdated(object sender, DataTransferEventArgs e)
+        {
+            if (PriceChangeTextBox.Text == "")
+                return;
+            if (Int32.Parse(PriceChangeTextBox.Text) < 0)
+            {
+                PriceChangeTextBox.Foreground = Brushes.Red;
+            } else if ( Int32.Parse(PriceChangeTextBox.Text) > 0)
+            {
+                PriceChangeTextBox.Foreground = Brushes.Green;
+            } else
+            {
+                PriceChangeTextBox.Foreground = Brushes.Black;
+            }
+        }
     }
 }

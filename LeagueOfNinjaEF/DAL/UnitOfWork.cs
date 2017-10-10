@@ -12,7 +12,7 @@ namespace LeagueOfNinjaEF.DAL
         private LoNContext context = new LoNContext();
         private GenericRepository<Models.Type> typeRepository;
         private GenericRepository<Equipment> equipmentRepository;
-        private GenericRepository<Ninja> ninjaRepository;
+        private NinjaRepository ninjaRepository;
 
         public GenericRepository<Models.Type> TypeRepository
         {
@@ -44,7 +44,7 @@ namespace LeagueOfNinjaEF.DAL
             {
                 if (this.ninjaRepository == null)
                 {
-                    this.ninjaRepository = new GenericRepository<Ninja>(context);
+                    this.ninjaRepository = new NinjaRepository(context);
                 }
                 return ninjaRepository;
             }

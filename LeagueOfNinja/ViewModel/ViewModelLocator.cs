@@ -42,7 +42,7 @@ namespace LeagueOfNinja.ViewModel
             ////    SimpleIoc.Default.Register<IDataService, DataService>();
             ////}
 
-            SimpleIoc.Default.Register<IMainViewModel,MockMainViewModel>();
+            SimpleIoc.Default.Register<IMainViewModel,MainViewModel>();
 
         }
 
