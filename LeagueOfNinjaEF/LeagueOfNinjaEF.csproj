@@ -49,9 +49,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DAL\IUnitOfWork.cs" />
     <Compile Include="DAL\LoNInitializer.cs" />
     <Compile Include="DAL\LoNContext.cs" />
-    <Compile Include="DAL\NinjaRepository.cs" />
     <Compile Include="DAL\UnitOfWork.cs" />
     <Compile Include="Migrations\201705290835591_InitialCreate.cs" />
     <Compile Include="Migrations\201705290835591_InitialCreate.Designer.cs">

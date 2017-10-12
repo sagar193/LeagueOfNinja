@@ -7,34 +7,47 @@ using System.Threading.Tasks;
 
 namespace LeagueOfNinjaEF.DAL
 {
-    public class UnitOfWork : IDisposable
+    public class UnitOfWork : IDisposable, IUnitOfWork
     {
-        private LoNContext context = new LoNContext();
-        private GenericRepository<Models.Type> typeRepository;
-        private GenericRepository<Equipment> equipmentRepository;
-        private NinjaRepository ninjaRepository;
+        private LoNContext context;
+        private GenericRepository<Models.Type> _TypeRepository;
+        private GenericRepository<Equipment> _EquipmentRepository;
+        private GenericRepository<Ninja> _NinjaRepository;
+
+        public UnitOfWork()
+        {
+            context = new LoNContext();
+        }
 
         public GenericRepository<Models.Type> TypeRepository
         {
             get
             {
-                if (this.typeRepository == null)
+                if (_TypeRepository == null)
                 {
-                    this.typeRepository = new GenericRepository<Models.Type>(context);
+                    this._TypeRepository = new GenericRepository<Models.Type>(context);
                 }
-                return typeRepository;
+                return _TypeRepository;
+            }
+            set
+            {
+                _TypeRepository = value;
             }
         }
-
+        
         public GenericRepository<Equipment> EquipmentRepository
         {
             get
             {
-                if (this.equipmentRepository == null)
+                if (_EquipmentRepository == null)
                 {
-                    this.equipmentRepository = new GenericRepository<Equipment>(context);
+                    _EquipmentRepository = new GenericRepository<Equipment>(context);
                 }
-                return equipmentRepository;
+                return _EquipmentRepository;
+            }
+            set
+            {
+                _EquipmentRepository = value;
             }
         }
 
@@ -42,11 +55,15 @@ namespace LeagueOfNinjaEF.DAL
         {
             get
             {
-                if (this.ninjaRepository == null)
+                if (_NinjaRepository == null)
                 {
-                    this.ninjaRepository = new NinjaRepository(context);
+                    _NinjaRepository = new GenericRepository<Ninja>(context);
                 }
-                return ninjaRepository;
+                return _NinjaRepository;
+            }
+            set
+            {
+                _NinjaRepository = value;
             }
         }
 
