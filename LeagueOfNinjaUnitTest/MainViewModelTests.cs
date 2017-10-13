@@ -18,7 +18,10 @@ namespace LeagueOfNinjaUnitTest
         public void TestMethod1()
         {
             Mock<IUnitOfWork> mockUnitOfWork = new Mock<IUnitOfWork>();
-            mockUnitOfWork.Setup(x => x.NinjaRepository.Get()).Returns(ninjaList);
+            mockUnitOfWork.Setup(x => x.NinjaRepository.Get(null, null, "")).Returns(ninjaList);
+            var mainViewModel = new LeagueOfNinja.ViewModel.MainViewModel();
+            mainViewModel.ninjaList.Contains(ninjaList[0]);
+            mainViewModel.ninjaList.Contains(ninjaList[1]);
         }
 
         void fillNinjaList()
