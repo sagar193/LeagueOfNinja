@@ -22,12 +22,14 @@ namespace LeagueOfNinja.ViewModel
     /// </summary>
     public class MainViewModel : IMainViewModel
     {
-        private UnitOfWork UOW;
+        private IUnitOfWork UOW;
 
-        public MainViewModel()
+        public MainViewModel(IUnitOfWork UOW = null)
         {
-            UOW = new UnitOfWork();
-
+            if (UOW == null)
+                UOW = new UnitOfWork();
+            else
+                this.UOW = UOW;
             fillTypeList();
             fillEquipmentList();
             fillNinjaList();

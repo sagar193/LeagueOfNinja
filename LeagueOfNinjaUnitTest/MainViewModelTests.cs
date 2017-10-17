@@ -13,13 +13,20 @@ namespace LeagueOfNinjaUnitTest
         List<Ninja> ninjaList = new List<Ninja>();
         List<Equipment> equipmentList = new List<Equipment>();
         List<LeagueOfNinjaEF.Models.Type> typeList = new List<LeagueOfNinjaEF.Models.Type>();
+        Mock<IUnitOfWork> mockUnitOfWork;
 
         [TestMethod]
         public void TestMethod1()
         {
-            Mock<IUnitOfWork> mockUnitOfWork = new Mock<IUnitOfWork>();
+            fillTypeList();
+            fillEquipmentList();
+            fillNinjaList();
+
+            mockUnitOfWork = new Mock<IUnitOfWork>();
             mockUnitOfWork.Setup(x => x.NinjaRepository.Get(null, null, "")).Returns(ninjaList);
-            var mainViewModel = new LeagueOfNinja.ViewModel.MainViewModel();
+            mockUnitOfWork.Setup(x => x.EquipmentRepository.Get(null, null, "")).Returns(equipmentList);
+            mockUnitOfWork.Setup(x => x.TypeRepository.Get(null, null, "")).Returns(typeList);
+            var mainViewModel = new LeagueOfNinja.ViewModel.MainViewModel(mockUnitOfWork.Object);
             mainViewModel.ninjaList.Contains(ninjaList[0]);
             mainViewModel.ninjaList.Contains(ninjaList[1]);
         }
@@ -181,7 +188,6 @@ namespace LeagueOfNinjaUnitTest
             #endregion
 
         }
-
-
+        
     }
 }
