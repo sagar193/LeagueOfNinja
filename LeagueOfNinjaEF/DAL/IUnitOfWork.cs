@@ -9,9 +9,9 @@ namespace LeagueOfNinjaEF.DAL
 {
     public interface IUnitOfWork
     {
-        GenericRepository<Models.Type> TypeRepository { get; set; }
-        GenericRepository<Equipment> EquipmentRepository { get; set; }
-        GenericRepository<Ninja> NinjaRepository { get; set; }
+        IRepository<Models.Type> TypeRepository { get; set; }
+        IRepository<Equipment> EquipmentRepository { get; set; }
+        IRepository<Ninja> NinjaRepository { get; set; }
 
         void Save();
     }

@@ -10,16 +10,16 @@ namespace LeagueOfNinjaEF.DAL
     public class UnitOfWork : IDisposable, IUnitOfWork
     {
         private LoNContext context;
-        private GenericRepository<Models.Type> _TypeRepository;
-        private GenericRepository<Equipment> _EquipmentRepository;
-        private GenericRepository<Ninja> _NinjaRepository;
+        private IRepository<Models.Type> _TypeRepository;
+        private IRepository<Equipment> _EquipmentRepository;
+        private IRepository<Ninja> _NinjaRepository;
 
         public UnitOfWork()
         {
             context = new LoNContext();
         }
 
-        public GenericRepository<Models.Type> TypeRepository
+        public IRepository<Models.Type> TypeRepository
         {
             get
             {
@@ -35,7 +35,7 @@ namespace LeagueOfNinjaEF.DAL
             }
         }
         
-        public GenericRepository<Equipment> EquipmentRepository
+        public IRepository<Equipment> EquipmentRepository
         {
             get
             {
@@ -51,7 +51,7 @@ namespace LeagueOfNinjaEF.DAL
             }
         }
 
-        public GenericRepository<Ninja> NinjaRepository
+        public IRepository<Ninja> NinjaRepository
         {
             get
             {

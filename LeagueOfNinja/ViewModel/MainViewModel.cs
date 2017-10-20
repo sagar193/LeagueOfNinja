@@ -24,6 +24,8 @@ namespace LeagueOfNinja.ViewModel
     {
         private IUnitOfWork UOW;
 
+        private static IMainViewModel instance;
+
         public MainViewModel(IUnitOfWork UOW = null)
         {
             if (UOW == null)
@@ -36,6 +38,19 @@ namespace LeagueOfNinja.ViewModel
             
             equipButton = new RelayCommand(equipEquipment, canEquipEquipment);
             unequipButton = new RelayCommand(unequipEquipment, canUnequipEquipment);
+            instance = this;
+        }
+
+        public static IMainViewModel Instance
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    return null;
+                }
+                return instance;
+            }
         }
 
         public override void equipEquipment()

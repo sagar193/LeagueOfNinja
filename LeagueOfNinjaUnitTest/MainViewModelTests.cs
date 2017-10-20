@@ -4,6 +4,8 @@ using Moq;
 using LeagueOfNinjaEF.DAL;
 using LeagueOfNinjaEF.Models;
 using System.Collections.Generic;
+using LeagueOfNinja.ViewModel;
+using FluentAssertions;
 
 namespace LeagueOfNinjaUnitTest
 {
@@ -14,9 +16,14 @@ namespace LeagueOfNinjaUnitTest
         List<Equipment> equipmentList = new List<Equipment>();
         List<LeagueOfNinjaEF.Models.Type> typeList = new List<LeagueOfNinjaEF.Models.Type>();
         Mock<IUnitOfWork> mockUnitOfWork;
+        IMainViewModel mainViewModel;
 
-        [TestMethod]
-        public void TestMethod1()
+        public MainViewModelTests()
+        {
+            setup();
+        }
+
+        private void setup()
         {
             fillTypeList();
             fillEquipmentList();
@@ -26,9 +33,68 @@ namespace LeagueOfNinjaUnitTest
             mockUnitOfWork.Setup(x => x.NinjaRepository.Get(null, null, "")).Returns(ninjaList);
             mockUnitOfWork.Setup(x => x.EquipmentRepository.Get(null, null, "")).Returns(equipmentList);
             mockUnitOfWork.Setup(x => x.TypeRepository.Get(null, null, "")).Returns(typeList);
-            var mainViewModel = new LeagueOfNinja.ViewModel.MainViewModel(mockUnitOfWork.Object);
-            mainViewModel.ninjaList.Contains(ninjaList[0]);
-            mainViewModel.ninjaList.Contains(ninjaList[1]);
+
+            mainViewModel = new MainViewModel(mockUnitOfWork.Object);
+        }
+
+        [TestMethod]
+        public void fillingSuccessfull()
+        {
+            mainViewModel.ninjaList.Should().Equal(ninjaList);
+            mainViewModel.EquipmentList.Should().Equal(equipmentList);
+            mainViewModel.typeList.Should().Equal(typeList);
+        }
+
+        [TestMethod]
+        public void selectNinja()
+        {
+            mainViewModel.selectedNinja = mainViewModel.ninjaList[1];
+            mainViewModel.totalEquipment.Health.Should().Be(0);
+            mainViewModel.totalEquipment.Dexterity.Should().Be(0);
+            mainViewModel.totalEquipment.Intelligence.Should().Be(0);
+            mainViewModel.totalEquipment.Mana.Should().Be(0);
+            mainViewModel.totalEquipment.Price.Should().Be(0);
+            mainViewModel.totalEquipment.Stamina.Should().Be(0);
+            mainViewModel.totalEquipment.Strength.Should().Be(0);
+        }
+
+        [TestMethod]
+        public void equipEquipment()
+        {
+            var equipedEquipment = mainViewModel.EquipmentList[0];
+            mainViewModel.selectedEquipment = mainViewModel.EquipmentList[0];
+            mainViewModel.equipEquipment();
+
+        }
+
+        [TestMethod]
+        public void unequipEquipment()
+        {
+
+        }
+
+        [TestMethod]
+        public void equip2EquipmentDifferentType()
+        {
+
+        }
+
+        [TestMethod]
+        public void unequip2EquipmentDifferentType()
+        {
+
+        }
+
+        [TestMethod]
+        public void equip2EquipmentSameType()
+        {
+
+        }
+
+        [TestMethod]
+        public void unequip2EquipmentSameType()
+        {
+
         }
 
         void fillNinjaList()

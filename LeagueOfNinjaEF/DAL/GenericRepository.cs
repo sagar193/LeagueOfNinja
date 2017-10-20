@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace LeagueOfNinjaEF.DAL
 {
-    public class GenericRepository<TEntity> where TEntity : class
+    public class GenericRepository<TEntity> : IRepository<TEntity> where TEntity : class
     {
         internal LoNContext context;
         internal DbSet<TEntity> dbSet;
