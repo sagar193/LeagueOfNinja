@@ -80,7 +80,30 @@
         </StackPanel>
         <!--Grid Column 3-->
         <StackPanel Grid.Column="2" VerticalAlignment="Center" Margin="10">
-            <TextBlock x:Name="ninjaName" FontWeight="Bold"  HorizontalAlignment="Stretch" TextWrapping="Wrap" VerticalAlignment="Center" Margin="5,5"/>
+            <TextBlock Text="{Binding selectedNinja.Name}" FontWeight="Bold"  HorizontalAlignment="Stretch" TextWrapping="Wrap" VerticalAlignment="Center" Margin="5,5"/>
+            <Grid Margin="0,0,0,20">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <!--All Equipment names-->
+                <StackPanel Grid.Column="0" Margin="0,0,0,10" VerticalAlignment="Center">
+                    <TextBlock HorizontalAlignment="Stretch" TextWrapping="Wrap" VerticalAlignment="Center" Margin="5,2" Text="Head: "/>
+                    <TextBlock HorizontalAlignment="Stretch" TextWrapping="Wrap" VerticalAlignment="Center" Margin="5,2" Text="Chest: "/>
+                    <TextBlock HorizontalAlignment="Stretch" TextWrapping="Wrap" VerticalAlignment="Center" Margin="5,2" Text="Legs: "/>
+                    <TextBlock HorizontalAlignment="Stretch" TextWrapping="Wrap" VerticalAlignment="Center" Margin="5,2" Text="Gloves: "/>
+                    <TextBlock HorizontalAlignment="Stretch" TextWrapping="Wrap" VerticalAlignment="Center" Margin="5,2" Text="Shoes: "/>
+                </StackPanel>
+                <!--All Equipment values-->
+                <StackPanel Grid.Column="1" Margin="0,0,0,10" VerticalAlignment="Center">
+                    <TextBlock HorizontalAlignment="Stretch" Text="{Binding selectedNinja.Helmet.Name}" Margin="5,2"/>
+                    <TextBlock HorizontalAlignment="Stretch" Text="{Binding selectedNinja.Chest.Name}" Margin="5,2"/>
+                    <TextBlock HorizontalAlignment="Stretch" Text="{Binding selectedNinja.Legs.Name}" Margin="5,2"/>
+                    <TextBlock HorizontalAlignment="Stretch" Text="{Binding selectedNinja.Gloves.Name}" Margin="5,2"/>
+                    <TextBlock HorizontalAlignment="Stretch" Text="{Binding selectedNinja.Shoes.Name}" Margin="5,2"/>
+                </StackPanel>
+            </Grid>
             <TextBlock Text="Total stats:" FontWeight="Bold"  HorizontalAlignment="Stretch" TextWrapping="Wrap" VerticalAlignment="Center" Margin="5,5"/>
             <Grid>
                 <Grid.ColumnDefinitions>
@@ -106,6 +129,10 @@
                     <TextBlock HorizontalAlignment="Stretch" Text="{Binding totalEquipment.Dexterity}" Margin="5,2" x:Name="totalAgilityTextBox"/>
                 </StackPanel>
             </Grid>
+        </StackPanel>
+
+        <StackPanel Grid.Column="2" VerticalAlignment="Center" Margin="10">
+            
         </StackPanel>
     </Grid>
 </Window>

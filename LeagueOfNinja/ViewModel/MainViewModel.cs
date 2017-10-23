@@ -80,6 +80,7 @@ namespace LeagueOfNinja.ViewModel
 
             UOW.Save();
             calculateTotalStats();
+            RaisePropertyChanged(selectedNinjaPropertyName);
         }
 
         public override void unequipEquipment()
