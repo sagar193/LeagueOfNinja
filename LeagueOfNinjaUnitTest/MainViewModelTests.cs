@@ -59,42 +59,115 @@ namespace LeagueOfNinjaUnitTest
         }
 
         [TestMethod]
-        public void equipEquipment()
+        public void equipAndUnequipEquipment()
         {
+            #region equiping the item
+            var equipedEquipment = mainViewModel.EquipmentList[0];
+            mainViewModel.selectedEquipment = mainViewModel.EquipmentList[0];
+            mainViewModel.equipEquipment();
+            #endregion
+
+            #region testing if calculation works
+            statCalculation(mainViewModel.totalEquipment, equipedEquipment);
+            #endregion
+            
+            #region unequiping the equipment
+            mainViewModel.selectedEquipment = mainViewModel.EquipmentList[0];
+            mainViewModel.unequipEquipment();
+            #endregion
+
+            #region testing if equipment is removed by calculating
+            statCalculation(mainViewModel.totalEquipment, new Equipment());
+            #endregion
+            
+        }
+
+        [TestMethod]
+        public void equipAndUnequip2EquipmentDifferentType()
+        {
+            #region equiping the item
+            var equipedEquipment = mainViewModel.EquipmentList[0];
+            mainViewModel.selectedEquipment = mainViewModel.EquipmentList[0];
+            mainViewModel.equipEquipment();
+            #endregion
+
+            #region equiping the second item
+            var secondequipedEquipment = mainViewModel.EquipmentList[4];
+            mainViewModel.selectedEquipment = mainViewModel.EquipmentList[4];
+            mainViewModel.equipEquipment();
+            #endregion
+
+            #region adding both stats
+            var totalEquipment = addEquipmentTot(equipedEquipment, secondequipedEquipment);
+            #endregion
+
+            #region testing by calculating
+            statCalculation(mainViewModel.totalEquipment, totalEquipment);
+            #endregion
+        }
+
+        [TestMethod]
+        public void equipAndUnequip2EquipmentSameType()
+        {
+            ///equiping the item
             var equipedEquipment = mainViewModel.EquipmentList[0];
             mainViewModel.selectedEquipment = mainViewModel.EquipmentList[0];
             mainViewModel.equipEquipment();
 
+            ///selecting the second item
+            var secondequipedEquipment = mainViewModel.EquipmentList[2];
+            mainViewModel.selectedEquipment = mainViewModel.EquipmentList[2];
+
+            ///test difference Equipment
+            var differenceEquipment = substractEquipmentTot(secondequipedEquipment, equipedEquipment);
+            statCalculation(mainViewModel.differenceEquipment, differenceEquipment);
+            
+            ///equiping the item
+            mainViewModel.equipEquipment();
+
+            ///testing by calculating
+            statCalculation(mainViewModel.totalEquipment, secondequipedEquipment);
         }
 
-        [TestMethod]
-        public void unequipEquipment()
+        Equipment substractEquipmentTot(Equipment firstEquipment, Equipment secondEquipment)
         {
+            Equipment newEquipment = new Equipment();
 
+            newEquipment.Health = firstEquipment.Health - secondEquipment.Health;
+            newEquipment.Dexterity = firstEquipment.Dexterity - secondEquipment.Dexterity;
+            newEquipment.Intelligence = firstEquipment.Intelligence - secondEquipment.Intelligence;
+            newEquipment.Mana = firstEquipment.Mana - secondEquipment.Mana;
+            newEquipment.Price = firstEquipment.Price - secondEquipment.Price;
+            newEquipment.Stamina = firstEquipment.Stamina - secondEquipment.Stamina;
+            newEquipment.Strength = firstEquipment.Strength - secondEquipment.Strength;
+
+            return newEquipment;
         }
 
-        [TestMethod]
-        public void equip2EquipmentDifferentType()
+        Equipment addEquipmentTot(Equipment firstEquipment, Equipment secondEquipment)
         {
+            Equipment newEquipment = new Equipment();
 
+            newEquipment.Health = firstEquipment.Health + secondEquipment.Health;
+            newEquipment.Dexterity = firstEquipment.Dexterity + secondEquipment.Dexterity;
+            newEquipment.Intelligence = firstEquipment.Intelligence + secondEquipment.Intelligence;
+            newEquipment.Mana = firstEquipment.Mana + secondEquipment.Mana;
+            newEquipment.Price = firstEquipment.Price + secondEquipment.Price;
+            newEquipment.Stamina = firstEquipment.Stamina + secondEquipment.Stamina;
+            newEquipment.Strength = firstEquipment.Strength + secondEquipment.Strength;
+
+            return newEquipment;
         }
 
-        [TestMethod]
-        public void unequip2EquipmentDifferentType()
+        void statCalculation(Equipment firstEquipment, Equipment secondEquipment)
         {
-
-        }
-
-        [TestMethod]
-        public void equip2EquipmentSameType()
-        {
-
-        }
-
-        [TestMethod]
-        public void unequip2EquipmentSameType()
-        {
-
+            firstEquipment.Health.Should().Be(secondEquipment.Health);
+            firstEquipment.Dexterity.Should().Be(secondEquipment.Dexterity);
+            firstEquipment.Intelligence.Should().Be(secondEquipment.Intelligence);
+            firstEquipment.Mana.Should().Be(secondEquipment.Mana);
+            firstEquipment.Price.Should().Be(secondEquipment.Price);
+            firstEquipment.Stamina.Should().Be(secondEquipment.Stamina);
+            firstEquipment.Strength.Should().Be(secondEquipment.Strength);
         }
 
         void fillNinjaList()
