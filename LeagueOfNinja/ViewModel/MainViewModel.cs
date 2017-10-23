@@ -22,18 +22,35 @@ namespace LeagueOfNinja.ViewModel
     /// </summary>
     public class MainViewModel : IMainViewModel
     {
-        private UnitOfWork UOW;
+        private IUnitOfWork UOW;
 
-        public MainViewModel()
+        private static IMainViewModel instance;
+
+        public MainViewModel(IUnitOfWork UOW = null)
         {
-            UOW = new UnitOfWork();
-
+            if (UOW == null)
+                UOW = new UnitOfWork();
+            else
+                this.UOW = UOW;
             fillTypeList();
             fillEquipmentList();
             fillNinjaList();
             
             equipButton = new RelayCommand(equipEquipment, canEquipEquipment);
             unequipButton = new RelayCommand(unequipEquipment, canUnequipEquipment);
+            instance = this;
+        }
+
+        public static IMainViewModel Instance
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    return null;
+                }
+                return instance;
+            }
         }
 
         public override void equipEquipment()

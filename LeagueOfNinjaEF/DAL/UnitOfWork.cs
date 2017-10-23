@@ -7,46 +7,63 @@ using System.Threading.Tasks;
 
 namespace LeagueOfNinjaEF.DAL
 {
-    public class UnitOfWork : IDisposable
+    public class UnitOfWork : IDisposable, IUnitOfWork
     {
-        private LoNContext context = new LoNContext();
-        private GenericRepository<Models.Type> typeRepository;
-        private GenericRepository<Equipment> equipmentRepository;
-        private NinjaRepository ninjaRepository;
+        private LoNContext context;
+        private IRepository<Models.Type> _TypeRepository;
+        private IRepository<Equipment> _EquipmentRepository;
+        private IRepository<Ninja> _NinjaRepository;
 
-        public GenericRepository<Models.Type> TypeRepository
+        public UnitOfWork()
+        {
+            context = new LoNContext();
+        }
+
+        public IRepository<Models.Type> TypeRepository
         {
             get
             {
-                if (this.typeRepository == null)
+                if (_TypeRepository == null)
                 {
-                    this.typeRepository = new GenericRepository<Models.Type>(context);
+                    this._TypeRepository = new GenericRepository<Models.Type>(context);
                 }
-                return typeRepository;
+                return _TypeRepository;
+            }
+            set
+            {
+                _TypeRepository = value;
+            }
+        }
+        
+        public IRepository<Equipment> EquipmentRepository
+        {
+            get
+            {
+                if (_EquipmentRepository == null)
+                {
+                    _EquipmentRepository = new GenericRepository<Equipment>(context);
+                }
+                return _EquipmentRepository;
+            }
+            set
+            {
+                _EquipmentRepository = value;
             }
         }
 
-        public GenericRepository<Equipment> EquipmentRepository
+        public IRepository<Ninja> NinjaRepository
         {
             get
             {
-                if (this.equipmentRepository == null)
+                if (_NinjaRepository == null)
                 {
-                    this.equipmentRepository = new GenericRepository<Equipment>(context);
+                    _NinjaRepository = new GenericRepository<Ninja>(context);
                 }
-                return equipmentRepository;
+                return _NinjaRepository;
             }
-        }
-
-        public GenericRepository<Ninja> NinjaRepository
-        {
-            get
+            set
             {
-                if (this.ninjaRepository == null)
-                {
-                    this.ninjaRepository = new NinjaRepository(context);
-                }
-                return ninjaRepository;
+                _NinjaRepository = value;
             }
         }
 

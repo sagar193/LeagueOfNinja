@@ -50,7 +50,17 @@ namespace LeagueOfNinja.ViewModel
         {
             get
             {
-                return ServiceLocator.Current.GetInstance<IMainViewModel>();
+                /*Correct way of returning:
+                 * return ServiceLocator.Current.GetInstance<IMainViewModel>();
+                 * this however does not return work with dependency injection so we are returning a static mainviewcontroller with the right UnitOfWork
+                 */
+
+                if (MainViewModel.Instance == null)
+                {
+                    new MainViewModel(new LeagueOfNinjaEF.DAL.UnitOfWork());
+                }
+
+                return MainViewModel.Instance;
             }
         }
         
