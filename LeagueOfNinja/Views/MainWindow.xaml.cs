@@ -27,20 +27,28 @@ namespace LeagueOfNinja
             InitializeComponent();
         }
 
-        private void PriceChangeTextBox_SourceUpdated(object sender, DataTransferEventArgs e)
+        private void updateTextboxColor(TextBlock textBlock)
         {
-            if (PriceChangeTextBox.Text == "")
+            if (textBlock.Text == "")
                 return;
-            if (Int32.Parse(PriceChangeTextBox.Text) < 0)
+            if (Int32.Parse(textBlock.Text) < 0)
             {
-                PriceChangeTextBox.Foreground = Brushes.Red;
-            } else if ( Int32.Parse(PriceChangeTextBox.Text) > 0)
-            {
-                PriceChangeTextBox.Foreground = Brushes.Green;
-            } else
-            {
-                PriceChangeTextBox.Foreground = Brushes.Black;
+                textBlock.Foreground = Brushes.Red;
             }
+            else if (Int32.Parse(textBlock.Text) > 0)
+            {
+                textBlock.Foreground = Brushes.Green;
+            }
+            else
+            {
+                textBlock.Foreground = Brushes.Black;
+            }
+        }
+
+        private void TextBox_Updated(object sender, DataTransferEventArgs e)
+        {
+            TextBlock textBlock = (TextBlock)sender;
+            updateTextboxColor(textBlock);
         }
     }
 }

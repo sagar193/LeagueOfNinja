@@ -59,13 +59,13 @@
                 </StackPanel>
                 <!--All stats differences-->
                 <StackPanel Grid.Column="2" Margin="0,0,0,10" VerticalAlignment="Center">
-                    <TextBlock HorizontalAlignment="Stretch" Text="{Binding differenceEquipment.Health}" Margin="5,2" x:Name="healthPointsChangeTextBox"/>
-                    <TextBlock HorizontalAlignment="Stretch" Text="{Binding differenceEquipment.Mana}" Margin="5,2" x:Name="manaChangeTextBox"/>
-                    <TextBlock HorizontalAlignment="Stretch" Text="{Binding differenceEquipment.Stamina}" Margin="5,2" x:Name="staminaChangeTextBox"/>
-                    <TextBlock HorizontalAlignment="Stretch" Text="{Binding differenceEquipment.Strength}" Margin="5,2" x:Name="StrengthChangeTextBox"/>
-                    <TextBlock HorizontalAlignment="Stretch" Text="{Binding differenceEquipment.Intelligence}" Margin="5,2" x:Name="IntelligenceChangeTextBox"/>
-                    <TextBlock HorizontalAlignment="Stretch" Text="{Binding differenceEquipment.Dexterity}" Margin="5,2" x:Name="AgilityChangeTextBox"/>
-                    <TextBlock HorizontalAlignment="Stretch" Text="{Binding differenceEquipment.Price,NotifyOnTargetUpdated=True, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" Margin="5,2" x:Name="PriceChangeTextBox" TargetUpdated="PriceChangeTextBox_SourceUpdated"  SourceUpdated="PriceChangeTextBox_SourceUpdated" />
+                    <TextBlock HorizontalAlignment="Stretch" Text="{Binding differenceEquipment.Health,NotifyOnTargetUpdated=True, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" Margin="5,2" TargetUpdated="TextBox_Updated"  SourceUpdated="TextBox_Updated"/>
+                    <TextBlock HorizontalAlignment="Stretch" Text="{Binding differenceEquipment.Mana,NotifyOnTargetUpdated=True, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" Margin="5,2"  TargetUpdated="TextBox_Updated"  SourceUpdated="TextBox_Updated"/>
+                    <TextBlock HorizontalAlignment="Stretch" Text="{Binding differenceEquipment.Stamina,NotifyOnTargetUpdated=True, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" Margin="5,2" TargetUpdated="TextBox_Updated"  SourceUpdated="TextBox_Updated"/>
+                    <TextBlock HorizontalAlignment="Stretch" Text="{Binding differenceEquipment.Strength,NotifyOnTargetUpdated=True, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" Margin="5,2" TargetUpdated="TextBox_Updated"  SourceUpdated="TextBox_Updated"/>
+                    <TextBlock HorizontalAlignment="Stretch" Text="{Binding differenceEquipment.Intelligence,NotifyOnTargetUpdated=True, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" Margin="5,2" TargetUpdated="TextBox_Updated"  SourceUpdated="TextBox_Updated"/>
+                    <TextBlock HorizontalAlignment="Stretch" Text="{Binding differenceEquipment.Dexterity,NotifyOnTargetUpdated=True, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" Margin="5,2" TargetUpdated="TextBox_Updated"  SourceUpdated="TextBox_Updated"/>
+                    <TextBlock HorizontalAlignment="Stretch" Text="{Binding differenceEquipment.Price,NotifyOnTargetUpdated=True, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" Margin="5,2" TargetUpdated="TextBox_Updated"  SourceUpdated="TextBox_Updated"/>
                 </StackPanel>
             </Grid>
             <Grid Margin="5,0">
