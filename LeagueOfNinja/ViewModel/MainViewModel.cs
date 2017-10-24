@@ -80,6 +80,7 @@ namespace LeagueOfNinja.ViewModel
 
             UOW.Save();
             calculateTotalStats();
+            differenceEquipment = new Equipment();
             RaisePropertyChanged(selectedNinjaPropertyName);
         }
 
@@ -110,6 +111,8 @@ namespace LeagueOfNinja.ViewModel
 
             UOW.Save();
             calculateTotalStats();
+            differenceEquipment = selectedEquipment;
+            RaisePropertyChanged(selectedNinjaPropertyName);
         }
 
         protected override void fillEquipmentList()
@@ -139,13 +142,5 @@ namespace LeagueOfNinja.ViewModel
             }
             EquipmentList = filteredEquipmentList;
         }
-
-        /// <summary>
-        /// Initializes a new instance of the MainViewModel class.
-        /// </summary>
-
-        ///All Parameters
-
-
     }
 }
