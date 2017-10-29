@@ -13,6 +13,7 @@ namespace LeagueOfNinjaEF.Models
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int NinjaId { get; set; }
         public string Name { get; set; }
+        public double Money { get; set; }
 
         //Foreign key for Chest Equipment
         public int? ChestRefId { get; set; }

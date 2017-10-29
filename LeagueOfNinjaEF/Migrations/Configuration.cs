@@ -12,6 +12,13 @@ namespace LeagueOfNinjaEF.Migrations
             AutomaticMigrationsEnabled = true;
         }
 
+        private void clearDatabase(DbContext context)
+        {
+            context.Database.ExecuteSqlCommand("sp_MSForEachTable 'ALTER TABLE ? NOCHECK CONSTRAINT ALL'");
+            context.Database.ExecuteSqlCommand("sp_MSForEachTable 'IF OBJECT_ID(''?'') NOT IN (ISNULL(OBJECT_ID(''[dbo].[__MigrationHistory]''),0)) DELETE FROM ?'");
+            context.Database.ExecuteSqlCommand("EXEC sp_MSForEachTable 'ALTER TABLE ? CHECK CONSTRAINT ALL'");
+        }
+
         protected override void Seed(LeagueOfNinjaEF.DAL.LoNContext context)
         {
             context.Type.AddOrUpdate(
@@ -39,10 +46,10 @@ namespace LeagueOfNinjaEF.Migrations
                 );
             context.Ninja.AddOrUpdate(
                 n => n.NinjaId,
-                new Models.Ninja { NinjaId = 1, Name = "Sagar" },
-                new Models.Ninja { NinjaId = 2, Name = "Rick" },
-                new Models.Ninja { NinjaId = 3, Name = "Narutard" },
-                new Models.Ninja { NinjaId = 4, Name = "testNinja" }
+                new Models.Ninja { NinjaId = 1, Name = "Sagar", Money = 20},
+                new Models.Ninja { NinjaId = 2, Name = "Rick", Money = 30 },
+                new Models.Ninja { NinjaId = 3, Name = "Narutard", Money = 5},
+                new Models.Ninja { NinjaId = 4, Name = "testNinja", Money = 200 }
                 );
         }
     }

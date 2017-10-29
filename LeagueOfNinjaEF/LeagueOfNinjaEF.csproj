@@ -62,6 +62,10 @@
     <Compile Include="Migrations\201710031348147_addedSomeFields.Designer.cs">
       <DependentUpon>201710031348147_addedSomeFields.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201710291459559_pricesAndMoney.cs" />
+    <Compile Include="Migrations\201710291459559_pricesAndMoney.Designer.cs">
+      <DependentUpon>201710291459559_pricesAndMoney.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Equipment.cs" />
     <Compile Include="Models\Ninja.cs" />
@@ -80,6 +84,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201710031348147_addedSomeFields.resx">
       <DependentUpon>201710031348147_addedSomeFields.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710291459559_pricesAndMoney.resx">
+      <DependentUpon>201710291459559_pricesAndMoney.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

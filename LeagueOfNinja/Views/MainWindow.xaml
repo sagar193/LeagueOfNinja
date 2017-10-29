@@ -77,6 +77,9 @@
                 <Button Command="{Binding equipButton}" Grid.Column="0" Content="Equip"/>
                 <Button Command="{Binding unequipButton}" Grid.Column="2" Content="Unequip"/>
             </Grid>
+            <Grid Margin="0,5">
+                <TextBlock HorizontalAlignment="Stretch" Margin="5,2" Text="{Binding message}" Foreground="Red" />
+            </Grid>
         </StackPanel>
         <!--Grid Column 3-->
         <StackPanel Grid.Column="2" VerticalAlignment="Center" Margin="10">
@@ -94,6 +97,7 @@
                     <TextBlock HorizontalAlignment="Stretch" TextWrapping="Wrap" VerticalAlignment="Center" Margin="5,2" Text="Legs: "/>
                     <TextBlock HorizontalAlignment="Stretch" TextWrapping="Wrap" VerticalAlignment="Center" Margin="5,2" Text="Gloves: "/>
                     <TextBlock HorizontalAlignment="Stretch" TextWrapping="Wrap" VerticalAlignment="Center" Margin="5,2" Text="Shoes: "/>
+                    <TextBlock HorizontalAlignment="Stretch" TextWrapping="Wrap" VerticalAlignment="Center" Margin="5,2" Text="Money: "/>
                 </StackPanel>
                 <!--All Equipment values-->
                 <StackPanel Grid.Column="1" Margin="0,0,0,10" VerticalAlignment="Center">
@@ -102,6 +106,7 @@
                     <TextBlock HorizontalAlignment="Stretch" Text="{Binding selectedNinja.Legs.Name}" Margin="5,2"/>
                     <TextBlock HorizontalAlignment="Stretch" Text="{Binding selectedNinja.Gloves.Name}" Margin="5,2"/>
                     <TextBlock HorizontalAlignment="Stretch" Text="{Binding selectedNinja.Shoes.Name}" Margin="5,2"/>
+                    <TextBlock HorizontalAlignment="Stretch" Text="{Binding selectedNinja.Money}" Margin="5,2"/>
                 </StackPanel>
             </Grid>
             <TextBlock Text="Total stats:" FontWeight="Bold"  HorizontalAlignment="Stretch" TextWrapping="Wrap" VerticalAlignment="Center" Margin="5,5"/>
@@ -118,15 +123,17 @@
                     <TextBlock HorizontalAlignment="Stretch" TextWrapping="Wrap" VerticalAlignment="Center" Margin="5,2" Text="Strength: "/>
                     <TextBlock HorizontalAlignment="Stretch" TextWrapping="Wrap" VerticalAlignment="Center" Margin="5,2" Text="Intelligence: "/>
                     <TextBlock HorizontalAlignment="Stretch" TextWrapping="Wrap" VerticalAlignment="Center" Margin="5,2" Text="Dexterity: "/>
+                    <TextBlock HorizontalAlignment="Stretch" TextWrapping="Wrap" VerticalAlignment="Center" Margin="5,2" Text="Price: "/>
                 </StackPanel>
                 <!--All stats values-->
                 <StackPanel Grid.Column="1" Margin="0,0,0,10" VerticalAlignment="Center">
-                    <TextBlock HorizontalAlignment="Stretch" Text="{Binding totalEquipment.Health}" Margin="5,2" x:Name="totalHealthPointsTextBox"/>
-                    <TextBlock HorizontalAlignment="Stretch" Text="{Binding totalEquipment.Mana}" Margin="5,2" x:Name="totalManaTextBox"/>
-                    <TextBlock HorizontalAlignment="Stretch" Text="{Binding totalEquipment.Stamina}" Margin="5,2" x:Name="totalStaminaTextBox"/>
-                    <TextBlock HorizontalAlignment="Stretch" Text="{Binding totalEquipment.Strength}" Margin="5,2" x:Name="totalStrengthTextBox"/>
-                    <TextBlock HorizontalAlignment="Stretch" Text="{Binding totalEquipment.Intelligence}" Margin="5,2" x:Name="totalIntelligenceTextBox"/>
-                    <TextBlock HorizontalAlignment="Stretch" Text="{Binding totalEquipment.Dexterity}" Margin="5,2" x:Name="totalAgilityTextBox"/>
+                    <TextBlock HorizontalAlignment="Stretch" Text="{Binding totalEquipment.Health}" Margin="5,2"/>
+                    <TextBlock HorizontalAlignment="Stretch" Text="{Binding totalEquipment.Mana}" Margin="5,2"/>
+                    <TextBlock HorizontalAlignment="Stretch" Text="{Binding totalEquipment.Stamina}" Margin="5,2"/>
+                    <TextBlock HorizontalAlignment="Stretch" Text="{Binding totalEquipment.Strength}" Margin="5,2"/>
+                    <TextBlock HorizontalAlignment="Stretch" Text="{Binding totalEquipment.Intelligence}" Margin="5,2"/>
+                    <TextBlock HorizontalAlignment="Stretch" Text="{Binding totalEquipment.Dexterity}" Margin="5,2"/>
+                    <TextBlock HorizontalAlignment="Stretch" Text="{Binding totalEquipment.Price}" Margin="5,2"/>
                 </StackPanel>
             </Grid>
         </StackPanel>

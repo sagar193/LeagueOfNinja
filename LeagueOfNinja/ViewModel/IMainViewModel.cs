@@ -255,6 +255,36 @@ namespace LeagueOfNinja.ViewModel
             }
         }
 
+        /// <summary>
+        /// The <see cref="message" /> property's name.
+        /// </summary>
+        public const string messagePropertyName = "message";
+
+        private string _message= "";
+
+        /// <summary>
+        /// Sets and gets the message property.
+        /// Changes to that property's value raise the PropertyChanged event. 
+        /// </summary>
+        public string message
+        {
+            get
+            {
+                return _message;
+            }
+
+            set
+            {
+                if (_message == value)
+                {
+                    return;
+                }
+
+                _message = value;
+                RaisePropertyChanged(messagePropertyName);
+            }
+        }
+
         public RelayCommand equipButton { get; protected set; }
         public RelayCommand unequipButton { get; protected set; }
 
@@ -271,6 +301,7 @@ namespace LeagueOfNinja.ViewModel
         /// </summary>
         private void selectedEquipmentChanged()
         {
+            message = "";
             if (selectedEquipment == null)
             {
                 setDifferenceEquipment(null);

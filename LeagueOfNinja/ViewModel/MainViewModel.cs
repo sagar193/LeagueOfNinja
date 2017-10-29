@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using GalaSoft.MvvmLight.CommandWpf;
 using System;
 using System.Linq;
+using System.Windows;
 
 namespace LeagueOfNinja.ViewModel
 {
@@ -57,21 +58,32 @@ namespace LeagueOfNinja.ViewModel
         {
             string selectedType = selectedEquipment.Type.Name;
 
+            if (selectedEquipment.Price > selectedNinja.Money)
+            {
+                message = "Price is higher then money left on ninja";
+                return;
+            }
+
             switch (selectedType)
             {
                 case "Head":
+                    priceReplace(selectedNinja.Helmet, selectedEquipment);
                     selectedNinja.Helmet = selectedEquipment;
                     break;
                 case "Chest":
+                    priceReplace(selectedNinja.Chest, selectedEquipment);
                     selectedNinja.Chest = selectedEquipment;
                     break;
                 case "Legs":
+                    priceReplace(selectedNinja.Legs, selectedEquipment);
                     selectedNinja.Legs = selectedEquipment;
                     break;
                 case "Gloves":
+                    priceReplace(selectedNinja.Gloves, selectedEquipment);
                     selectedNinja.Gloves = selectedEquipment;
                     break;
                 case "Shoes":
+                    priceReplace(selectedNinja.Shoes, selectedEquipment);
                     selectedNinja.Shoes = selectedEquipment;
                     break;
                 default:
@@ -84,6 +96,15 @@ namespace LeagueOfNinja.ViewModel
             RaisePropertyChanged(selectedNinjaPropertyName);
         }
 
+        private void priceReplace(Equipment oldEquipment, Equipment newEquipment)
+        {
+            if (oldEquipment != null)
+            {
+                selectedNinja.Money += oldEquipment.Price;
+            }
+            selectedNinja.Money -= newEquipment.Price;
+        }
+
         public override void unequipEquipment()
         {
             string selectedType = selectedEquipment.Type.Name;
@@ -91,18 +112,23 @@ namespace LeagueOfNinja.ViewModel
             switch (selectedType)
             {
                 case "Head":
+                    selectedNinja.Money += selectedNinja.Helmet.Price;
                     selectedNinja.Helmet = null;
                     break;
                 case "Chest":
+                    selectedNinja.Money += selectedNinja.Chest.Price;
                     selectedNinja.Chest = null;
                     break;
                 case "Legs":
+                    selectedNinja.Money += selectedNinja.Legs.Price;
                     selectedNinja.Legs = null;
                     break;
                 case "Gloves":
+                    selectedNinja.Money += selectedNinja.Gloves.Price;
                     selectedNinja.Gloves = null;
                     break;
                 case "Shoes":
+                    selectedNinja.Money += selectedNinja.Shoes.Price;
                     selectedNinja.Shoes = null;
                     break;
                 default:
