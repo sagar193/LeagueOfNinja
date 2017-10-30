@@ -10,7 +10,7 @@ namespace LeagueOfNinjaEF.Models
 {
     public class Ninja
     {
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int NinjaId { get; set; }
         public string Name { get; set; }
         public double Money { get; set; }

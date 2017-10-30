@@ -43,7 +43,7 @@ namespace LeagueOfNinja.ViewModel
             ////}
 
             SimpleIoc.Default.Register<IMainViewModel,MainViewModel>();
-
+            SimpleIoc.Default.Register<ICrudEquipmentViewModel, CrudEquipmentViewModel>();
         }
 
         public IMainViewModel Main
@@ -61,6 +61,17 @@ namespace LeagueOfNinja.ViewModel
                 }
 
                 return MainViewModel.Instance;
+            }
+        }
+
+        public ICrudEquipmentViewModel CrudEquipmentVM
+        {
+            get
+            {
+                if (CrudEquipmentViewModel.Instance == null)
+                    new CrudEquipmentViewModel(new LeagueOfNinjaEF.DAL.UnitOfWork());
+
+                return CrudEquipmentViewModel.Instance;
             }
         }
         

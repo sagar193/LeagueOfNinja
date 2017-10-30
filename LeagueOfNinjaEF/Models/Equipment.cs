@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
@@ -9,7 +10,7 @@ namespace LeagueOfNinjaEF.Models
 {
     public class Equipment
     {
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        [Key]
         public int EquipmentId { get; set; }
         public string Name { get; set; }
         public int Health { get; set; }

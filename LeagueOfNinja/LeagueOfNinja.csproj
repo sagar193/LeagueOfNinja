@@ -86,12 +86,21 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="ViewModel\Command\RelayCommand.cs" />
+    <Compile Include="ViewModel\CrudEquipmentViewModel.cs" />
+    <Compile Include="ViewModel\ICrudEquipmentViewModel.cs" />
     <Compile Include="ViewModel\IMainViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
+    <Compile Include="Views\CrudEquipmentView.xaml.cs">
+      <DependentUpon>CrudEquipmentView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\selectNinja.xaml.cs">
       <DependentUpon>selectNinja.xaml</DependentUpon>
     </Compile>
+    <Page Include="Views\CrudEquipmentView.xaml">
+      <SubType>Form</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
