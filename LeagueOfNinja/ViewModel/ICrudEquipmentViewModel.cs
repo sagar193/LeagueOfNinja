@@ -12,7 +12,6 @@ namespace LeagueOfNinja.ViewModel
     {
         List<Equipment> equipmentList { get; set; }
         List<LeagueOfNinjaEF.Models.Type> typeList { get; set; }
-        void selectedTypeChanged();
 
         RelayCommand saveButton { get; set; }
         RelayCommand clearButton { get; set; }

@@ -287,6 +287,7 @@ namespace LeagueOfNinja.ViewModel
 
         public RelayCommand equipButton { get; protected set; }
         public RelayCommand unequipButton { get; protected set; }
+        public RelayCommand openManageEquipmentsButton { get; protected set; }
 
         abstract protected void fillNinjaList();
 

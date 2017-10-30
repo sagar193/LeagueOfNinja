@@ -4,6 +4,8 @@ using LeagueOfNinjaEF.DAL;
 using LeagueOfNinjaEF.Models;
 using System.Collections.Generic;
 using System.Linq;
+using System;
+using System.Windows;
 
 namespace LeagueOfNinja.ViewModel
 {
@@ -91,13 +93,13 @@ namespace LeagueOfNinja.ViewModel
         /// </summary>
         public const string typeListPropertyName = "typeList";
 
-        private List<Type> _TypeList = null;
+        private List<LeagueOfNinjaEF.Models.Type> _TypeList = null;
 
         /// <summary>
         /// Sets and gets the typeList property.
         /// Changes to that property's value raise the PropertyChanged event. 
         /// </summary>
-        public List<Type> typeList
+        public List<LeagueOfNinjaEF.Models.Type> typeList
         {
             get
             {
@@ -121,13 +123,13 @@ namespace LeagueOfNinja.ViewModel
         /// </summary>
         public const string selectedTypePropertyName = "selectedType";
 
-        private Type _SelectedType = null;
+        private LeagueOfNinjaEF.Models.Type _SelectedType = null;
 
         /// <summary>
         /// Sets and gets the selectedType property.
         /// Changes to that property's value raise the PropertyChanged event. 
         /// </summary>
-        public Type selectedType
+        public LeagueOfNinjaEF.Models.Type selectedType
         {
             get
             {
@@ -142,6 +144,7 @@ namespace LeagueOfNinja.ViewModel
                 }
 
                 _SelectedType = value;
+                selectedTypeChanged();
                 RaisePropertyChanged(selectedTypePropertyName);
             }
         }
@@ -176,7 +179,7 @@ namespace LeagueOfNinja.ViewModel
             }
         }
 
-        void ICrudEquipmentViewModel.selectedTypeChanged()
+        private void selectedTypeChanged()
         {
             IEnumerable<Equipment> fullEquipmentList = UOW.EquipmentRepository.Get();
             List<Equipment> filteredEquipmentList = new List<Equipment>();
@@ -265,6 +268,11 @@ namespace LeagueOfNinja.ViewModel
             if (selectedEquipment.Type == null)
                 return false;
             return true;
+        }
+
+        public static implicit operator Window(CrudEquipmentViewModel v)
+        {
+            throw new NotImplementedException();
         }
     }
 }

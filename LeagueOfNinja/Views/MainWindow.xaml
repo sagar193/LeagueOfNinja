@@ -141,5 +141,9 @@
         <StackPanel Grid.Column="2" VerticalAlignment="Center" Margin="10">
             
         </StackPanel>
+
+        <Grid Grid.Column="2" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="10">
+            <Button Command="{Binding openManageEquipmentsButton}" Content="Manage equipment" HorizontalAlignment="Center" VerticalAlignment="Center" />
+        </Grid>
     </Grid>
 </Window>

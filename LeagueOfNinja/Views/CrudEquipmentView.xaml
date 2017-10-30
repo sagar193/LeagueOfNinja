@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:ignore="http://www.galasoft.ch/ignore"
         mc:Ignorable="d ignore"
-        DataContext="{Binding CrudEquipmentVM, Source={StaticResource Locator}}"
-        Title="MainWindow" Height="450" Width="640">
+        Title="MainWindow" Height="450" Width="640"
+        DataContext="{Binding CrudEquipmentVM, Source={StaticResource Locator}}">
     <Grid>
 
         <!--2 kolommen-->

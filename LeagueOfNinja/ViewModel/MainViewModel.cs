@@ -39,6 +39,7 @@ namespace LeagueOfNinja.ViewModel
             
             equipButton = new RelayCommand(equipEquipment, canEquipEquipment);
             unequipButton = new RelayCommand(unequipEquipment, canUnequipEquipment);
+            openManageEquipmentsButton = new RelayCommand(openManageEquipments);
             instance = this;
         }
 
@@ -139,6 +140,13 @@ namespace LeagueOfNinja.ViewModel
             calculateTotalStats();
             differenceEquipment = selectedEquipment;
             RaisePropertyChanged(selectedNinjaPropertyName);
+        }
+
+        public void openManageEquipments()
+        {
+            var EV = new Views.CrudEquipmentView();
+            App.Current.MainWindow = EV;
+            EV.Show();
         }
 
         protected override void fillEquipmentList()
