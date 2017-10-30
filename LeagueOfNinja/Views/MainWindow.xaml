@@ -80,6 +80,14 @@
             <Grid Margin="0,5">
                 <TextBlock HorizontalAlignment="Stretch" Margin="5,2" Text="{Binding message}" Foreground="Red" />
             </Grid>
+            <Grid Margin="5,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Button Command="{Binding emptyNinjaButton}" Grid.Column="1" Content="Empty ninja"/>
+            </Grid>
         </StackPanel>
         <!--Grid Column 3-->
         <StackPanel Grid.Column="2" VerticalAlignment="Center" Margin="10">

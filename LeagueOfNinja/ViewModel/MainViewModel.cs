@@ -40,6 +40,7 @@ namespace LeagueOfNinja.ViewModel
             equipButton = new RelayCommand(equipEquipment, canEquipEquipment);
             unequipButton = new RelayCommand(unequipEquipment, canUnequipEquipment);
             openManageEquipmentsButton = new RelayCommand(openManageEquipments);
+            emptyNinjaButton = new RelayCommand(emptyNinja);
             instance = this;
         }
 
@@ -147,6 +148,42 @@ namespace LeagueOfNinja.ViewModel
             var EV = new Views.CrudEquipmentView();
             App.Current.MainWindow = EV;
             EV.Show();
+        }
+
+        public void emptyNinja()
+        {
+            if (selectedNinja.Chest != null)
+            {
+                selectedNinja.Money += selectedNinja.Chest.Price;
+                selectedNinja.Chest = null;
+            }
+            if (selectedNinja.Gloves != null)
+            {
+                selectedNinja.Money += selectedNinja.Gloves.Price;
+                selectedNinja.Gloves = null;
+            }
+            if (selectedNinja.Helmet != null)
+            {
+                selectedNinja.Money += selectedNinja.Helmet.Price;
+                selectedNinja.Helmet = null;
+            }
+            if (selectedNinja.Legs != null)
+            {
+                selectedNinja.Money += selectedNinja.Legs.Price;
+                selectedNinja.Legs = null;
+            }
+            if (selectedNinja.Shoes != null)
+            {
+                selectedNinja.Money += selectedNinja.Shoes.Price;
+                selectedNinja.Shoes = null;
+            }
+            selectedNinja = selectedNinja;
+
+            calculateTotalStats();
+            RaisePropertyChanged(selectedNinjaPropertyName);
+            selectedEquipmentChanged();
+            RaisePropertyChanged(selectedEquipmentPropertyName);
+            UOW.Save();
         }
 
         public override void refreshEquipmentList()

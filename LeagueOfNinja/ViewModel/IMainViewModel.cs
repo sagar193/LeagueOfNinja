@@ -288,6 +288,7 @@ namespace LeagueOfNinja.ViewModel
         public RelayCommand equipButton { get; protected set; }
         public RelayCommand unequipButton { get; protected set; }
         public RelayCommand openManageEquipmentsButton { get; protected set; }
+        public RelayCommand emptyNinjaButton { get; protected set; }
 
         abstract public void refreshNinjaList();
 
@@ -300,7 +301,7 @@ namespace LeagueOfNinja.ViewModel
         /// <summary>
         /// is being executed everytime the selected equipment is changed
         /// </summary>
-        private void selectedEquipmentChanged()
+        protected void selectedEquipmentChanged()
         {
             message = "";
             if (selectedEquipment == null)
@@ -357,7 +358,7 @@ namespace LeagueOfNinja.ViewModel
 
             if (equipedEquipment == null)
             {
-                differenceEquipment = test;
+                differenceEquipment = selectedEquipment;
                 return;
             }
 
