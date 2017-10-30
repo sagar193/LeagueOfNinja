@@ -61,6 +61,7 @@ namespace LeagueOfNinjaUnitTest
         [TestMethod]
         public void equipAndUnequipEquipment()
         {
+            mainViewModel.selectedNinja = mainViewModel.ninjaList[1];
             #region equiping the item
             var equipedEquipment = mainViewModel.EquipmentList[0];
             mainViewModel.selectedEquipment = mainViewModel.EquipmentList[0];
@@ -85,6 +86,7 @@ namespace LeagueOfNinjaUnitTest
         [TestMethod]
         public void equipAndUnequip2EquipmentDifferentType()
         {
+            mainViewModel.selectedNinja = mainViewModel.ninjaList[1];
             #region equiping the item
             var equipedEquipment = mainViewModel.EquipmentList[0];
             mainViewModel.selectedEquipment = mainViewModel.EquipmentList[0];
@@ -109,6 +111,7 @@ namespace LeagueOfNinjaUnitTest
         [TestMethod]
         public void equipAndUnequip2EquipmentSameType()
         {
+            mainViewModel.selectedNinja = mainViewModel.ninjaList[1];
             ///equiping the item
             var equipedEquipment = mainViewModel.EquipmentList[0];
             mainViewModel.selectedEquipment = mainViewModel.EquipmentList[0];
@@ -178,10 +181,12 @@ namespace LeagueOfNinjaUnitTest
             ninja1.Name = "ninja1";
             ninja1.Helmet = equipmentList[2];
             ninja1.Chest = equipmentList[4];
+            ninja1.Money = 200;
             ninjaList.Add(ninja1);
 
             Ninja ninja2 = new Ninja();
             ninja2.Name = "ninja2";
+            ninja2.Money = 200;
             ninjaList.Add(ninja2);
         }
 

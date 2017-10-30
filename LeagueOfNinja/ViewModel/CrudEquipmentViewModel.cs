@@ -214,6 +214,7 @@ namespace LeagueOfNinja.ViewModel
                 UOW.Save();
             }
             clearSelectedEquipment();
+            MainViewModel.Instance.refreshEquipmentList();
             equipmentList = UOW.EquipmentRepository.Get().ToList();
         }
 
@@ -228,6 +229,7 @@ namespace LeagueOfNinja.ViewModel
             UOW.Save();
 
             clearSelectedEquipment();
+            MainViewModel.Instance.refreshEquipmentList();
             equipmentList = UOW.EquipmentRepository.Get().ToList();
         }
 

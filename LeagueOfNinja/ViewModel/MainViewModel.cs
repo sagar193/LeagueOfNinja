@@ -33,9 +33,9 @@ namespace LeagueOfNinja.ViewModel
                 UOW = new UnitOfWork();
             else
                 this.UOW = UOW;
-            fillTypeList();
-            fillEquipmentList();
-            fillNinjaList();
+            refreshTypeList();
+            refreshEquipmentList();
+            refreshNinjaList();
             
             equipButton = new RelayCommand(equipEquipment, canEquipEquipment);
             unequipButton = new RelayCommand(unequipEquipment, canUnequipEquipment);
@@ -149,17 +149,17 @@ namespace LeagueOfNinja.ViewModel
             EV.Show();
         }
 
-        protected override void fillEquipmentList()
+        public override void refreshEquipmentList()
         {
             EquipmentList = UOW.EquipmentRepository.Get().ToList();
         }
 
-        protected override void fillNinjaList()
+        public override void refreshNinjaList()
         {
             ninjaList = UOW.NinjaRepository.Get().ToList();
         }
 
-        protected override void fillTypeList()
+        public override void refreshTypeList()
         {
             typeList = UOW.TypeRepository.Get().ToList();
         }
