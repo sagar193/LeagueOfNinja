@@ -19,10 +19,7 @@ namespace LeagueOfNinja.Views
         {
             if (ninjaSelectListView.SelectedItem != null)
             {
-                MainWindow main = new MainWindow();
-                App.Current.MainWindow = main;
                 this.Close();
-                main.Show();
             }
         }
     }

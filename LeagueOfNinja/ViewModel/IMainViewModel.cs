@@ -379,26 +379,18 @@ namespace LeagueOfNinja.ViewModel
         {
             Equipment total = new Equipment();
 
+            if (selectedNinja == null)
+                return;
             if (selectedNinja.Chest != null)
-            {
                 addEquipmentTo(total, selectedNinja.Chest);
-            }
             if (selectedNinja.Helmet != null)
-            {
                 addEquipmentTo(total, selectedNinja.Helmet);
-            }
             if (selectedNinja.Legs != null)
-            {
                 addEquipmentTo(total, selectedNinja.Legs);
-            }
             if (selectedNinja.Gloves != null)
-            {
                 addEquipmentTo(total, selectedNinja.Gloves);
-            }
             if (selectedNinja.Shoes != null)
-            {
                 addEquipmentTo(total, selectedNinja.Shoes);
-            }
 
             totalEquipment = total;
         }
@@ -455,5 +447,7 @@ namespace LeagueOfNinja.ViewModel
 
             return false;
         }
+
+        abstract public void setNinja(int id);
     }
 }

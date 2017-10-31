@@ -89,7 +89,9 @@
     <Compile Include="ViewModel\CrudEquipmentViewModel.cs" />
     <Compile Include="ViewModel\ICrudEquipmentViewModel.cs" />
     <Compile Include="ViewModel\IMainViewModel.cs" />
+    <Compile Include="ViewModel\ISelectNinjaViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
+    <Compile Include="ViewModel\SelectNinjaViewModel.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
     <Compile Include="Views\CrudEquipmentView.xaml.cs">
       <DependentUpon>CrudEquipmentView.xaml</DependentUpon>

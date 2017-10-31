@@ -59,6 +59,7 @@ namespace LeagueOfNinja.ViewModel
         public override void equipEquipment()
         {
             string selectedType = selectedEquipment.Type.Name;
+            selectedNinja = UOW.NinjaRepository.GetByID(selectedNinja.NinjaId);
 
             if (selectedEquipment.Price > selectedNinja.Money)
             {
@@ -95,6 +96,7 @@ namespace LeagueOfNinja.ViewModel
             UOW.Save();
             calculateTotalStats();
             differenceEquipment = new Equipment();
+            selectedNinja = UOW.NinjaRepository.GetByID(selectedNinja.NinjaId);
             RaisePropertyChanged(selectedNinjaPropertyName);
         }
 
@@ -212,6 +214,11 @@ namespace LeagueOfNinja.ViewModel
                     filteredEquipmentList.Add(equipment);
             }
             EquipmentList = filteredEquipmentList;
+        }
+
+        public override void setNinja(int id)
+        {
+            selectedNinja = UOW.NinjaRepository.GetByID(id);
         }
     }
 }

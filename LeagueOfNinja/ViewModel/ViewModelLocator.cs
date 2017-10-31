@@ -44,6 +44,7 @@ namespace LeagueOfNinja.ViewModel
 
             SimpleIoc.Default.Register<IMainViewModel,MainViewModel>();
             SimpleIoc.Default.Register<ICrudEquipmentViewModel, CrudEquipmentViewModel>();
+            SimpleIoc.Default.Register<ISelectNinjaViewModel, SelectNinjaViewModel>();
         }
 
         public IMainViewModel Main
@@ -74,6 +75,19 @@ namespace LeagueOfNinja.ViewModel
                 return CrudEquipmentViewModel.Instance;
             }
         }
+
+        public ISelectNinjaViewModel SelectNinjaVM
+        {
+            get
+            {
+                if (SelectNinjaViewModel.Instance == null)
+                    new SelectNinjaViewModel(new LeagueOfNinjaEF.DAL.UnitOfWork());
+
+                return SelectNinjaViewModel.Instance;
+            }
+        }
+
+
         
         public static void Cleanup()
         {
