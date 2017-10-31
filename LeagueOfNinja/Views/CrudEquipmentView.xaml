@@ -47,7 +47,7 @@
                 </StackPanel>
                 <!--All stats values-->
                 <StackPanel Grid.Column="1" Margin="0,0,0,10" VerticalAlignment="Center">
-                    <TextBox HorizontalAlignment="Stretch" Text="{Binding selectedEquipment.EquipmentId}" Margin="5,2"/>
+                    <TextBox HorizontalAlignment="Stretch" Text="{Binding selectedEquipment.EquipmentId}" Margin="5,2" IsEnabled="False"/>
                     <TextBox HorizontalAlignment="Stretch" Text="{Binding selectedEquipment.Name}" Margin="5,2"/>
                     <TextBox HorizontalAlignment="Stretch" Text="{Binding selectedEquipment.Health}" Margin="5,2"/>
                     <TextBox HorizontalAlignment="Stretch" Text="{Binding selectedEquipment.Mana}" Margin="5,2"/>
